@@ -1,0 +1,282 @@
+/* ============================================================================
+ * BUEHNE.CSS, die zweite Design-Schicht: Planeten, Radar, HUD-Rahmen.
+ * ============================================================================
+ *
+ * Angelegt 22.08.2026. LOESCHBAR, und zwar vollstaendig. Wer diese Datei und
+ * die <div class="buehne"> aus den Seiten entfernt, hat wieder die schlichte
+ * Fassung. Kein Text, kein Link, keine Sperre, keine Rechtsangabe haengt daran.
+ *
+ * KOSTENREGEL, uebernommen aus dem Protection Panel, weil sie sich dort
+ * bewaehrt hat:
+ *   - Alles liegt HINTER dem Inhalt (z-index -1), nimmt keine Klicks an und
+ *     traegt keine Zahl.
+ *   - Kein WebGL, kein Bild, keine JavaScript-Schleife. Die Planeten sind
+ *     Farbverlaeufe, die Kugelform kommt aus einem radialen Verlauf darueber.
+ *   - Bewegt werden ausschliesslich transform und opacity. Beides erledigt die
+ *     Grafikkarte, ohne dass die Seite neu gesetzt wird.
+ *   - Die Wolkenbaender sind ABSICHTLICH unbewegt. Eine Animation auf
+ *     background-position muesste der Browser in jedem Bild ueber die ganze
+ *     Kugelflaeche neu zeichnen. Genau das bremst schwache Laptops aus.
+ *   - Taktzeiten 40 bis 120 Sekunden. Das bleibt ruhig.
+ *
+ * DREI STUFEN, geschaltet ueber das Attribut data-anim am <html>:
+ *   1 = Ruhe. Alles steht still, die Bilder bleiben.
+ *   2 = Normal. Planeten schweben, Ringe atmen, Radar dreht langsam.
+ *   3 = Voll. Zusaetzlich Sonarpuls, Sternenflimmern, Rasterdrift.
+ * Wer Bewegung im Betriebssystem abgeschaltet hat, bekommt Stufe 1, ohne dass
+ * er etwas einstellen muss. Voreinstellung ist 2, siehe js/buehne.js.
+ */
+
+/* ------------------------------------------------------------------ BUEHNE -- */
+
+.buehne{
+  position:fixed; inset:0; z-index:-1; overflow:hidden; pointer-events:none;
+  contain:strict;
+}
+
+/* Sternenfeld: zwei Lagen fest gesetzter Punkte, kein Bild, kein Skript. */
+.sterne{
+  position:absolute; inset:-10%;
+  background-image:
+    radial-gradient(1.4px 1.4px at 12% 18%, rgba(232,242,252,.55), transparent),
+    radial-gradient(1.2px 1.2px at 78% 12%, rgba(232,242,252,.42), transparent),
+    radial-gradient(1.6px 1.6px at 34% 62%, rgba(127,212,255,.50), transparent),
+    radial-gradient(1.1px 1.1px at 62% 78%, rgba(232,242,252,.38), transparent),
+    radial-gradient(1.3px 1.3px at 88% 54%, rgba(127,212,255,.40), transparent),
+    radial-gradient(1.1px 1.1px at 22% 88%, rgba(232,242,252,.32), transparent),
+    radial-gradient(1.5px 1.5px at 52% 30%, rgba(232,242,252,.30), transparent),
+    radial-gradient(1.2px 1.2px at 8%  46%, rgba(127,212,255,.34), transparent);
+  opacity:.85;
+}
+
+/* Taktisches Raster, sehr leise. */
+.raster-buehne{
+  position:absolute; inset:-2%;
+  background-image:
+    linear-gradient(rgba(60,201,245,.045) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(60,201,245,.045) 1px, transparent 1px);
+  background-size:64px 64px;
+  mask-image:radial-gradient(ellipse 90% 70% at 50% 30%, #000 30%, transparent 100%);
+  -webkit-mask-image:radial-gradient(ellipse 90% 70% at 50% 30%, #000 30%, transparent 100%);
+}
+
+/* ---------------------------------------------------------------- PLANETEN -- */
+
+.planet{
+  position:absolute; border-radius:50%;
+  will-change:transform;
+  animation:schweben 62s ease-in-out infinite alternate;
+}
+/* Die Baender liegen IM Planeten, leicht schraeg, wie bei einem Gasriesen. */
+.planet::before{
+  content:''; position:absolute; inset:0; border-radius:50%;
+  background:repeating-linear-gradient(172deg,
+    rgba(60,201,245,.13) 0px,  rgba(60,201,245,.13) 3px,
+    rgba(10,30,48,0)     3px,  rgba(10,30,48,0)     11px,
+    rgba(96,165,214,.09) 11px, rgba(96,165,214,.09) 15px,
+    rgba(5,15,26,0)      15px, rgba(5,15,26,0)      26px);
+}
+/* Die Kugel: Licht oben links, tiefer Schatten unten rechts. Daher die Tiefe. */
+.planet::after{
+  content:''; position:absolute; inset:0; border-radius:50%;
+  background:radial-gradient(circle at 30% 26%,
+    rgba(120,200,240,.22) 0%, rgba(10,25,40,.10) 42%,
+    rgba(2,8,16,.72) 78%, rgba(2,6,12,.92) 100%);
+  box-shadow:inset -16px -20px 44px rgba(2,8,16,.88),
+             inset 8px 10px 26px rgba(60,201,245,.10);
+}
+.planet-1{
+  width:440px; height:440px; top:-150px; right:-150px;
+  background:radial-gradient(circle at 32% 28%, #16354E 0%, #0C1E30 46%, #060F1B 100%);
+  box-shadow:0 0 110px rgba(60,201,245,.10);
+  animation-duration:74s;
+}
+.planet-2{
+  width:230px; height:230px; top:128%; left:-86px;
+  background:radial-gradient(circle at 36% 30%, #123B4A 0%, #0A1F2B 52%, #050D16 100%);
+  box-shadow:0 0 70px rgba(60,201,245,.08);
+  animation-duration:96s; animation-delay:-18s;
+}
+.planet-3{
+  width:120px; height:120px; top:62%; right:6%;
+  background:radial-gradient(circle at 34% 30%, #1B2E44 0%, #0B1725 58%, #05101A 100%);
+  box-shadow:0 0 40px rgba(60,201,245,.07);
+  animation-duration:54s; animation-delay:-26s;
+}
+
+/* Orbit, kein Saturnring: eine flache Ellipse, die den grossen Planeten
+ * umlaeuft. Die Neigung macht scaleY, nicht ein zweites Bild. */
+.orbit{
+  position:absolute; border-radius:50%;
+  border:1px solid rgba(60,201,245,.13);
+  animation:ringatmen 58s ease-in-out infinite alternate;
+}
+.orbit-1{ top:-230px; right:-250px; width:640px; height:640px;
+          transform:rotate(-16deg) scaleY(.34); }
+.orbit-2{ top:-190px; right:-210px; width:560px; height:560px;
+          transform:rotate(-24deg) scaleY(.26); border-style:dashed;
+          animation-duration:82s; animation-delay:-12s; }
+
+/* ------------------------------------------------------------------- RADAR -- */
+/* Ein Kegel aus einem konischen Verlauf, der sich dreht. Ein einziges
+ * Element, eine einzige transform-Animation. */
+
+.radar{
+  position:absolute; top:44%; left:-140px;
+  width:420px; height:420px; border-radius:50%;
+  border:1px solid rgba(60,201,245,.10);
+  opacity:.55;
+}
+.radar::before{
+  content:''; position:absolute; inset:8%; border-radius:50%;
+  border:1px solid rgba(60,201,245,.09);
+  box-shadow:0 0 0 42px rgba(60,201,245,.03) inset;
+}
+.radar::after{
+  content:''; position:absolute; inset:0; border-radius:50%;
+  background:conic-gradient(from 0deg,
+    rgba(60,201,245,.20) 0deg, rgba(60,201,245,.05) 26deg,
+    transparent 60deg, transparent 360deg);
+  will-change:transform;
+  animation:sweep 9s linear infinite;
+}
+
+@keyframes schweben{ from{ transform:translate3d(0,0,0); } to{ transform:translate3d(0,-30px,0); } }
+@keyframes ringatmen{ from{ opacity:.45; } to{ opacity:.95; } }
+@keyframes sweep{ from{ transform:rotate(0deg); } to{ transform:rotate(360deg); } }
+@keyframes puls{ from{ opacity:.5; transform:scale(.96); } to{ opacity:1; transform:scale(1); } }
+@keyframes flimmern{ from{ opacity:.55; } to{ opacity:1; } }
+@keyframes drift{ from{ transform:translate3d(0,0,0); } to{ transform:translate3d(-64px,-64px,0); } }
+
+/* ------------------------------------------------------------- DIE STUFEN -- */
+
+/* Stufe 1: Ruhe. Alles steht, nichts verschwindet. */
+html[data-anim="1"] .planet,
+html[data-anim="1"] .orbit,
+html[data-anim="1"] .radar::after,
+html[data-anim="1"] .sterne,
+html[data-anim="1"] .raster-buehne,
+html[data-anim="1"] .lampe{ animation:none !important; }
+
+/* Stufe 3: die Zugaben, die es unter 3 nicht gibt. */
+html[data-anim="3"] .sterne{ animation:flimmern 7s ease-in-out infinite alternate; }
+html[data-anim="3"] .raster-buehne{ animation:drift 120s linear infinite; }
+html[data-anim="3"] .radar::after{ animation-duration:6s; }
+html[data-anim="3"] .radar{ opacity:.75; }
+
+/* Wer Bewegung im System abgeschaltet hat, bekommt Ruhe, ohne zu klicken. */
+@media (prefers-reduced-motion: reduce){
+  .planet, .orbit, .radar::after, .sterne, .raster-buehne, .lampe{
+    animation:none !important;
+  }
+}
+
+/* --------------------------------------------------------------- HUD-TEILE -- */
+
+/* Eckwinkel wie auf einem Lagebildschirm. Zwei Ecken, nicht vier: ruhiger. */
+.hud{ position:relative; }
+.hud::before, .hud::after{
+  content:''; position:absolute; width:22px; height:22px; pointer-events:none;
+  border-color:rgba(60,201,245,.55); border-style:solid;
+}
+.hud::before{ top:-1px; left:-1px; border-width:2px 0 0 2px; }
+.hud::after{ bottom:-1px; right:-1px; border-width:0 2px 2px 0; }
+
+/* Kennplakette, die Zeile ueber einem Abschnitt. */
+.plakette{
+  display:inline-flex; align-items:center; gap:9px;
+  font-family:'Share Tech Mono', ui-monospace, monospace;
+  font-size:11px; letter-spacing:.2em; text-transform:uppercase;
+  color:var(--text-leise); margin-bottom:10px;
+}
+.plakette::before{
+  content:''; width:26px; height:1px; background:var(--sonar); opacity:.7;
+}
+.lampe{
+  width:7px; height:7px; border-radius:50%; background:var(--gruen);
+  box-shadow:0 0 8px rgba(47,211,167,.8);
+  animation:puls 2.6s ease-in-out infinite alternate;
+}
+
+/* ---------------------------------------------------------------- LOGOCHIP -- */
+/* Die Zeichen der beiden Programme, ueberall dort, wo man zu ihnen kommt.
+ * Ein Zeichen neben dem Namen sagt in einem Blick, wohin der Knopf fuehrt. */
+
+.zeichen{
+  display:flex; align-items:center; gap:13px; margin-bottom:10px;
+}
+.zeichen img{ width:46px; height:46px; flex:0 0 46px; }
+.zeichen h3{ margin:0; }
+
+.tor.mitzeichen{ display:inline-flex; align-items:center; gap:10px; }
+.tor.mitzeichen img{
+  width:22px; height:22px; flex:0 0 22px;
+  filter:drop-shadow(0 0 3px rgba(0,0,0,.5));
+}
+
+/* Der grosse Kopf-Abdruck der Seite. */
+.marke img.wappen{ width:64px; height:64px; flex:0 0 64px; }
+
+/* --------------------------------------------------------------- DIAGRAMME -- */
+/* Echte Zahlen, echte Achsen. Jede Zahl in diesen Bildern ist gemessen und
+ * traegt darunter, wann und woraus. Nichts davon ist ein Platzhalter. */
+
+.messfeld{
+  border:1px solid var(--rand); border-radius:5px; background:var(--karte);
+  padding:20px 22px 18px;
+}
+.messfeld h3{ font-size:17px; margin:0 0 3px; }
+.messfeld .quelle{
+  font-family:'Share Tech Mono', ui-monospace, monospace;
+  font-size:11px; letter-spacing:.14em; text-transform:uppercase;
+  color:var(--text-leise); margin:0 0 16px;
+}
+.messfeld svg{ display:block; width:100%; height:auto; }
+.messfeld .deutung{ font-size:15px; color:var(--text-leise); margin:14px 0 0; }
+.messfeld .deutung b{ color:var(--text); }
+
+.messraster{ display:grid; grid-template-columns:1fr 1fr; gap:16px; margin-top:24px; }
+.messraster .breit{ grid-column:1 / -1; }
+
+/* --------------------------------------------------------- STUFENSCHALTER -- */
+
+.stufen{
+  display:flex; align-items:center; gap:8px; flex-wrap:wrap;
+  font-family:'Share Tech Mono', ui-monospace, monospace;
+  font-size:11.5px; letter-spacing:.14em; text-transform:uppercase;
+  color:var(--text-leise); margin-top:16px;
+}
+.stufen button{
+  background:transparent; border:1px solid var(--rand); border-radius:3px;
+  color:var(--text-leise); padding:5px 11px; cursor:pointer;
+  font-family:inherit; font-size:inherit; letter-spacing:inherit;
+}
+.stufen button:hover{ color:var(--text); border-color:var(--sonar); }
+.stufen button[aria-pressed="true"]{
+  color:#06121D; background:var(--sonar); border-color:var(--sonar); font-weight:700;
+}
+
+/* ------------------------------------------------------------------ SCHMAL -- */
+
+@media (max-width: 900px){
+  .messraster{ grid-template-columns:1fr; }
+  /* Auf kleinen Geraeten kostet jede bewegte Flaeche mehr, und die Planeten
+   * stehen ohnehin halb ausserhalb. Zwei bleiben, der Radar geht. */
+  .radar, .planet-3, .orbit-2{ display:none; }
+  .planet-1{ width:300px; height:300px; top:-110px; right:-110px; }
+}
+
+/* ------------------------------------------------- DURCHBLICK AUF DIE BUEHNE --
+ * front.css legt Kopf und Fuss auf einen deckenden Grund. Solange die Buehne
+ * dahinter liegt, sieht man sie dort nicht. Statt die Farben in front.css zu
+ * aendern (das waere ein Eingriff in die erste Schicht), wird hier nur die
+ * Deckkraft genommen. Loescht man buehne.css, sind die alten Flaechen zurueck.
+ */
+.kopf{
+  background:linear-gradient(180deg, rgba(12,22,38,.72) 0%, rgba(10,18,32,.55) 100%);
+}
+.fuss{ background:rgba(8,17,29,.82); }
+.leiste{ background:rgba(10,18,32,.78); }
+.saeule, .feld, .messfeld, .rahmen, .klartext, .hinweis, .tafel, .paket{
+  background:rgba(14,27,42,.82);
+}

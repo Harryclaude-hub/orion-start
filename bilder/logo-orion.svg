@@ -1,0 +1,61 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 96 96" role="img" aria-label="Orion">
+  <!-- ============================================================
+       ORION, das Zeichen der Plattform. Angelegt 22.08.2026.
+
+       Warum es so aussieht: die beiden Programme tragen je ein
+       eigenes Zeichen, den Stern im Fadenkreuz (Panel Pro) und das
+       Delta im Taktik-Rahmen (Protection). Das hier ist das Dach
+       ueber beiden und darf keins der zwei nachaeffen. Genommen ist
+       deshalb das, was der Name selbst hergibt: die DREI GUERTEL-
+       STERNE des Orion, schraeg, wie sie am Himmel stehen. Der
+       mittlere ist der groesste, weil er die Mitte haelt.
+
+       Rahmen und Eckmarken kommen aus derselben Familie wie die
+       zwei Programme, damit die drei Zeichen nebeneinander
+       zusammengehoeren.
+
+       Reine Design-Datei: loeschbar, ohne jede Funktion. Feste
+       Farben, weil ein Favicon keine CSS-Variablen kennt.
+       ============================================================ -->
+  <defs>
+    <linearGradient id="orion-tiefe" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#102033"/>
+      <stop offset="1" stop-color="#060C16"/>
+    </linearGradient>
+    <radialGradient id="orion-glut" cx="50%" cy="50%" r="50%">
+      <stop offset="0" stop-color="#7FD4FF" stop-opacity="0.55"/>
+      <stop offset="1" stop-color="#7FD4FF" stop-opacity="0"/>
+    </radialGradient>
+  </defs>
+
+  <!-- Grundplatte mit Eckschnitt -->
+  <path d="M22 4 H74 L92 22 V74 L74 92 H22 L4 74 V22 Z"
+        fill="url(#orion-tiefe)" stroke="#22384F" stroke-width="2.4"/>
+  <path d="M22 4 H74 L92 22 V74 L74 92 H22 L4 74 V22 Z"
+        fill="none" stroke="#3CC9F5" stroke-width="1" opacity="0.5"/>
+
+  <!-- Eckmarken, zwei gegenueber, nicht vier: ruhiger -->
+  <path d="M10 30 V22 L22 10 H30" fill="none" stroke="#3CC9F5" stroke-width="2.4" stroke-linecap="round"/>
+  <path d="M86 66 V74 L74 86 H66" fill="none" stroke="#3CC9F5" stroke-width="2.4" stroke-linecap="round"/>
+
+  <!-- Suchring, gestrichelt wie ein Sonarkreis -->
+  <circle cx="48" cy="48" r="31" fill="none" stroke="#3CC9F5" stroke-width="1.3"
+          stroke-dasharray="5 8" opacity="0.62"/>
+  <circle cx="48" cy="48" r="22" fill="url(#orion-glut)"/>
+
+  <!-- Peilstriche -->
+  <path d="M48 11 v7 M48 78 v7 M11 48 h7 M78 48 h7"
+        stroke="#E3A94A" stroke-width="2.6" stroke-linecap="round"/>
+
+  <!-- Die drei Guertelsterne, schraeg wie am Himmel. Bewusst VIERZACKIG:
+       Panel Pro traegt den fuenfzackigen Stern, das Dach darf ihn nicht
+       nachaeffen. Der mittlere ist der groesste, er haelt die Mitte. -->
+  <path d="M30 62 L66 34" fill="none" stroke="#3CC9F5" stroke-width="1.1"
+        stroke-dasharray="2 5" opacity="0.7"/>
+  <path d="M30 54 Q32.2 59.8 38 62 Q32.2 64.2 30 70 Q27.8 64.2 22 62 Q27.8 59.8 30 54 Z" fill="#7FD4FF"/>
+  <path d="M48 34.5 Q51.4 44.6 61.5 48 Q51.4 51.4 48 61.5 Q44.6 51.4 34.5 48 Q44.6 44.6 48 34.5 Z" fill="#E7F1FB"/>
+  <path d="M66 24.5 Q68.6 31.4 75.5 34 Q68.6 36.6 66 43.5 Q63.4 36.6 56.5 34 Q63.4 31.4 66 24.5 Z" fill="#7FD4FF"/>
+
+  <!-- Der eine warme Punkt, wie in den zwei anderen Zeichen -->
+  <circle cx="70" cy="27" r="2.6" fill="#E3A94A"/>
+</svg>

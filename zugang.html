@@ -5,11 +5,28 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Zugang</title>
 <meta name="robots" content="noindex, nofollow">
-<link rel="icon" type="image/svg+xml" href="bilder/logo-protection.svg">
+<link rel="icon" type="image/svg+xml" href="bilder/logo-orion.svg">
 <link rel="stylesheet" href="schrift/schrift.css?v=1">
-<link rel="stylesheet" href="css/front.css?v=1">
+<link rel="stylesheet" href="css/front.css?v=2">
+<link rel="stylesheet" href="css/buehne.css?v=2">
+<script src="js/buehne.js?v=2"></script>
 </head>
 <body>
+
+<!-- Design-Schicht 2, LOESCHBAR: Sternenfeld, Raster, Planeten, Radar.
+     Liegt hinter allem, nimmt keine Klicks an, traegt keine Zahl.
+     Wer den Block und css/buehne.css entfernt, hat die schlichte Fassung. -->
+<div class="buehne" aria-hidden="true">
+  <div class="sterne"></div>
+  <div class="raster-buehne"></div>
+  <div class="orbit orbit-1"></div>
+  <div class="orbit orbit-2"></div>
+  <div class="planet planet-1"></div>
+  <div class="planet planet-2"></div>
+  <div class="planet planet-3"></div>
+  <div class="radar"></div>
+</div>
+
 
 <div class="leiste">
   <div class="hof">
@@ -71,6 +88,7 @@
       </div>
     </div>
   </div>
+    <div class="hof"><div id="stufenschalter"></div></div>
 </footer>
 
 <script src="js/tor.js"></script>
