@@ -280,3 +280,73 @@ html[data-anim="3"] .radar{ opacity:.75; }
 .saeule, .feld, .messfeld, .rahmen, .klartext, .hinweis, .tafel, .paket{
   background:rgba(14,27,42,.82);
 }
+
+/* ============================================================================
+ * FEINSCHLIFF DER BUEHNE, 23.08.2026. Loeschbar wie der Rest der Datei.
+ * ========================================================================== */
+
+/* Nebelschleier: zwei grosse, sehr leise Farbfelder hinter allem. Statisch,
+ * ein einziger Verlauf, kostet nichts. */
+.buehne::before{
+  content:''; position:absolute; inset:0;
+  background:
+    radial-gradient(ellipse 640px 420px at 82% 8%, rgba(60,201,245,.05), transparent 70%),
+    radial-gradient(ellipse 520px 380px at 6% 78%, rgba(47,211,167,.035), transparent 70%),
+    radial-gradient(ellipse 300px 220px at 62% 46%, rgba(227,169,74,.022), transparent 70%);
+}
+
+/* Die Baender der Gasriesen, zweite Fassung: unregelmaessigere Breiten und
+ * ein einzelnes warmes Band, wie es echte Riesen tragen. Immer noch ein
+ * einziger wiederholter Verlauf, immer noch absichtlich unbewegt. */
+.planet::before{
+  background:repeating-linear-gradient(172deg,
+    rgba(60,201,245,.15)  0px,  rgba(60,201,245,.15)  2px,
+    rgba(10,30,48,0)      2px,  rgba(10,30,48,0)      9px,
+    rgba(96,165,214,.10)  9px,  rgba(96,165,214,.10)  14px,
+    rgba(5,15,26,0)       14px, rgba(5,15,26,0)       21px,
+    rgba(227,169,74,.05)  21px, rgba(227,169,74,.05)  24px,
+    rgba(5,15,26,0)       24px, rgba(5,15,26,0)       38px,
+    rgba(127,212,255,.07) 38px, rgba(127,212,255,.07) 41px,
+    rgba(5,15,26,0)       41px, rgba(5,15,26,0)       54px);
+}
+/* Duenner Atmosphaerenrand, damit die Kugel nicht hart im Schwarz endet. */
+.planet-1{ box-shadow:0 0 110px rgba(60,201,245,.10),
+                      inset 0 0 2px rgba(127,212,255,.5),
+                      0 0 0 1px rgba(127,212,255,.06); }
+
+/* Ein Mond fuer den grossen Riesen. Laeuft eine flache Bahn ab, nur
+ * transform, Taktzeit 88 s. Auf Stufe 1 steht er, wie alles. */
+.mond{
+  position:absolute; top:96px; right:104px;
+  width:26px; height:26px; border-radius:50%;
+  background:radial-gradient(circle at 32% 28%, #2C4A66 0%, #14283C 55%, #081422 100%);
+  box-shadow:inset -4px -5px 9px rgba(2,8,16,.85), 0 0 12px rgba(60,201,245,.08);
+  will-change:transform;
+  animation:mondbahn 88s linear infinite;
+}
+@keyframes mondbahn{
+  0%   { transform:translate3d(0,0,0)         scale(1); }
+  25%  { transform:translate3d(-210px,64px,0) scale(1.12); }
+  50%  { transform:translate3d(-420px,10px,0) scale(1); }
+  75%  { transform:translate3d(-210px,-52px,0) scale(.86); }
+  100% { transform:translate3d(0,0,0)         scale(1); }
+}
+html[data-anim="1"] .mond{ animation:none !important; }
+@media (prefers-reduced-motion: reduce){ .mond{ animation:none !important; } }
+@media (max-width: 900px){ .mond{ display:none; } }
+
+/* Kontakte auf dem Radarschirm: drei stille Punkte, wie Ziele einer letzten
+ * Umdrehung. Statisch; nur auf Stufe 3 glimmen sie im Takt des Kegels. */
+.radar{
+  background-image:
+    radial-gradient(3px 3px at 62% 34%, rgba(47,211,167,.75), transparent),
+    radial-gradient(2.4px 2.4px at 38% 58%, rgba(60,201,245,.6), transparent),
+    radial-gradient(2px 2px at 70% 66%, rgba(60,201,245,.45), transparent);
+}
+html[data-anim="3"] .radar{ animation:puls 9s ease-in-out infinite alternate; }
+
+/* Die Plakette: der Strich davor waechst, wenn der Abschnitt auftaucht,
+ * angebunden an dieselbe Klasse wie das Auftauchen selbst. */
+.plakette::before{ transition:width .7s ease .2s; }
+html.js-tiefe .steigt .plakette::before{ width:0; }
+html.js-tiefe .steigt.da .plakette::before{ width:26px; }

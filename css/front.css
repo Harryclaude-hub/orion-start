@@ -339,3 +339,132 @@ p{ max-width:74ch; }
   width:auto; margin:0 8px 0 0; vertical-align:middle;
 }
 .tafel label{ display:inline; color:var(--text-leise); font-size:15.5px; }
+
+/* ============================================================================
+ * FEINSCHLIFF, 23.08.2026. Immer noch Design-Schicht 1, immer noch loeschbar.
+ * Alles hier ist Detailarbeit: Schriftfamilie der Ueberschriften, Eckschnitte,
+ * Fokus, Auswahl, Rollbalken, kleine Zeichen an Karten und Knoepfen.
+ * ========================================================================== */
+
+/* ------------------------------------------------------ SCHRIFT-HIERARCHIE -- */
+/* Die Ueberschriften tragen denselben Stencil wie die Panels (Black Ops One).
+ * Bewusst NICHT im Rechtstext: Paragrafen in Stencil waeren Theater. */
+
+h1, h2, .leiste .name{
+  font-family:'Black Ops One', 'Rajdhani', system-ui, sans-serif;
+  font-weight:400;
+}
+h1{ letter-spacing:.06em; }
+h2{ font-size:23px; letter-spacing:.07em; }
+.rechtstext h1, .rechtstext h2, .tafel h2{
+  font-family:'Rajdhani', system-ui, sans-serif; font-weight:700;
+}
+h1, h2, .satz{ text-wrap:balance; }
+p{ hyphens:auto; }
+
+/* Der Merkstrich unter jeder Abschnitts-Ueberschrift. */
+main h2::after{
+  content:''; display:block; width:46px; height:3px; margin-top:9px;
+  background:linear-gradient(90deg, var(--sonar), transparent);
+}
+.rechtstext h2::after, .tafel h2::after{ display:none; }
+
+/* Mono-Zahlen stehen uebereinander, nicht im Flattersatz. */
+.merk, .plakette, .kennung, code, .quelle{ font-variant-numeric:tabular-nums; }
+
+/* ----------------------------------------------------------- GRUNDDETAILS -- */
+
+::selection{ background:var(--sonar); color:#06121D; }
+
+:focus-visible{ outline:2px solid var(--sonar); outline-offset:3px; border-radius:2px; }
+
+html{ scrollbar-color:var(--rand) var(--grund); }
+::-webkit-scrollbar{ width:11px; }
+::-webkit-scrollbar-track{ background:var(--grund); }
+::-webkit-scrollbar-thumb{
+  background:var(--karte-2); border:2px solid var(--grund); border-radius:6px;
+}
+::-webkit-scrollbar-thumb:hover{ background:var(--rand); }
+
+code{
+  font-family:'Share Tech Mono', ui-monospace, monospace; font-size:.86em;
+  color:var(--tuerkis); background:rgba(20,36,58,.6);
+  border:1px solid var(--rand); border-radius:3px; padding:1px 6px;
+}
+
+a{ text-underline-offset:3px; text-decoration-thickness:1px; }
+a:hover{ color:var(--gold); }
+
+/* --------------------------------------------------------------- KNOEPFE -- */
+/* Eckschnitt wie im Panel, und ein Lichtstreifen, der beim Zeigen einmal
+ * durchlaeuft. Nur transform, und wer Ruhe will, bekommt keinen Streifen. */
+
+.tor{
+  position:relative; overflow:hidden;
+  clip-path:polygon(9px 0, 100% 0, 100% calc(100% - 9px),
+                    calc(100% - 9px) 100%, 0 100%, 0 9px);
+  border-radius:0;
+}
+.tor::after{
+  content:''; position:absolute; top:0; bottom:0; width:38%;
+  left:0; transform:translateX(-160%) skewX(-18deg);
+  background:linear-gradient(90deg, transparent, rgba(255,255,255,.34), transparent);
+  transition:transform .55s ease; pointer-events:none;
+}
+.tor:hover::after{ transform:translateX(320%) skewX(-18deg); }
+.tor[disabled]{ clip-path:none; }
+.tor[disabled]::after{ display:none; }
+
+/* ------------------------------------------------------------------ KARTEN -- */
+/* Jedes Feld bekommt eine stille Eckmarke, die beim Zeigen Farbe annimmt,
+ * und hebt sich zwei Millimeter. */
+
+.feld, .messfeld, .saeule{ position:relative; }
+.feld::after{
+  content:''; position:absolute; right:-1px; bottom:-1px;
+  width:14px; height:14px; pointer-events:none;
+  border-right:2px solid var(--rand); border-bottom:2px solid var(--rand);
+  transition:border-color .3s ease;
+}
+.feld{ transition:transform .3s ease, border-color .3s ease; }
+.feld:hover{ transform:translateY(-3px); border-color:rgba(60,201,245,.55); }
+.feld:hover::after{ border-color:var(--sonar); }
+
+.merk{ position:relative; padding-left:22px; }
+.merk::before{
+  content:''; position:absolute; left:9px; top:50%;
+  width:5px; height:5px; transform:translateY(-50%) rotate(45deg);
+  background:var(--tuerkis); opacity:.8;
+}
+
+/* ---------------------------------------------------------- BILD-RAHMEN -- */
+/* Die Statuszeile ueber jedem Bildschirmfoto bekommt rechts eine Kennung,
+ * und der Rahmen antwortet auf den Zeiger. */
+
+.rahmen{ transition:border-color .3s ease, box-shadow .3s ease; }
+.rahmen:hover{
+  border-color:rgba(60,201,245,.5);
+  box-shadow:0 10px 34px rgba(0,0,0,.45), 0 0 24px rgba(60,201,245,.07);
+}
+.rahmen .balken::after{
+  content:'AUFNAHME 22.08.2026'; margin-left:auto;
+  letter-spacing:.14em; opacity:.65;
+}
+
+/* --------------------------------------------------------- FUSS-STATUSZEILE -- */
+
+.fussstatus{
+  font-family:'Share Tech Mono', ui-monospace, monospace;
+  font-size:10.5px; letter-spacing:.17em; text-transform:uppercase;
+  color:var(--text-leise); opacity:.75;
+  border-top:1px dashed var(--rand); padding-top:14px; margin-top:18px;
+}
+.fussstatus b{ color:var(--tuerkis); font-weight:400; }
+
+/* ------------------------------------------------------------------- RUHE -- */
+
+@media (prefers-reduced-motion: reduce){
+  .tor::after{ display:none; }
+  .feld, .rahmen{ transition:none; }
+  .feld:hover{ transform:none; }
+}

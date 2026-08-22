@@ -196,3 +196,32 @@ html[data-anim="1"] .kartenraum a{ transform:none; transition:none; }
 @media (max-width: 900px){
   .kartenraum, .klappen.zwei{ grid-template-columns:1fr; }
 }
+
+/* ============================================================================
+ * FEINSCHLIFF DER TIEFE, 23.08.2026. Loeschbar wie der Rest der Datei.
+ * ========================================================================== */
+
+/* Die Klappen: Zeile fuellt sich beim Zeigen leise, der offene Zustand traegt
+ * links eine Lichtkante, damit man beim Ueberfliegen sieht, was offen ist. */
+.klappe > summary{ transition:background .25s ease, color .2s ease; }
+.klappe > summary:hover{ background:rgba(60,201,245,.05); }
+.klappe[open]{ border-left:2px solid var(--sonar); }
+.klappe[open] > summary .kennung{ color:var(--sonar); }
+
+/* Der Zeitstrahl: die Punkte glimmen, die Wenden staerker. */
+.strahl li::before{ box-shadow:0 0 9px rgba(60,201,245,.35); }
+.strahl li.wende::before{ box-shadow:0 0 13px rgba(227,169,74,.55); }
+
+/* Kartenraum: die Eckmarke unten rechts zieht beim Zeigen nach. */
+.kartenraum a{ position:relative; }
+.kartenraum a::after{
+  content:''; position:absolute; right:-1px; bottom:-1px;
+  width:16px; height:16px; pointer-events:none;
+  border-right:2px solid var(--rand); border-bottom:2px solid var(--rand);
+  transition:width .3s ease, height .3s ease, border-color .3s ease;
+}
+.kartenraum a:hover::after{ width:34px; height:34px; border-color:var(--sonar); }
+.kartenraum a:hover .pfeil{ color:var(--gold); }
+@media (prefers-reduced-motion: reduce){
+  .kartenraum a::after{ transition:none; }
+}
