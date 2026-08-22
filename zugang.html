@@ -1,0 +1,130 @@
+<!doctype html>
+<html lang="de">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Zugang</title>
+<meta name="robots" content="noindex, nofollow">
+<link rel="icon" type="image/svg+xml" href="bilder/logo-protection.svg">
+<link rel="stylesheet" href="schrift/schrift.css?v=1">
+<link rel="stylesheet" href="css/front.css?v=1">
+</head>
+<body>
+
+<div class="leiste">
+  <div class="hof">
+    <a class="name" href="index.html">Orion</a>
+    <nav>
+      <a href="index.html#panel">Panel Pro</a>
+      <a href="index.html#protection">Protection</a>
+      <a href="preise.html">Preise</a>
+    </nav>
+  </div>
+</div>
+
+<section>
+  <div class="hof">
+
+    <div class="tafel">
+      <h2>Zugang</h2>
+      <p class="leise">Der Gefechtsstand ist verschlossen. Wer einen Code hat,
+        gibt ihn hier ein. Der Code wird nicht im Klartext gespeichert und nicht
+        verschickt.</p>
+
+      <div id="eingabe">
+        <input id="code" type="password" autocomplete="off" spellcheck="false"
+               placeholder="ZUGANGSCODE" aria-label="Zugangscode">
+        <button id="pruefen" type="button">Freischalten</button>
+      </div>
+
+      <p id="meldung" class="meldung"></p>
+
+      <div id="tore" class="zugang" hidden></div>
+
+      <p id="abmelden" class="bildtext" hidden>
+        <a href="#" id="vergessen">Zugang auf diesem Gerät wieder entfernen</a>
+      </p>
+    </div>
+
+    <div class="hinweis" style="max-width:520px;margin:22px auto 0">
+      <p class="leise"><b>Ehrlich dazu:</b> diese Sperre läuft im Browser. Sie
+        hält Neugierige auf, aber niemanden, der die Seite mit den
+        Entwicklerwerkzeugen öffnet. Die richtige Sperre sitzt im Panel selbst,
+        das ein eigenes Kennwort verlangt. Wenn hier einmal Geld verlangt wird,
+        wandert die Prüfung auf einen Server, der Laufzeit und Sperrung kennt.
+        Die Stelle dafür ist in <code>js/tor.js</code> markiert.</p>
+    </div>
+
+  </div>
+</section>
+
+<footer class="fuss">
+  <div class="hof">
+    <div class="reihen">
+      <div class="spalte">
+        <h4>Rechtliches</h4>
+        <a href="recht/impressum.html">Impressum</a>
+        <a href="recht/datenschutz.html">Datenschutz</a>
+        <a href="recht/agb.html">AGB</a>
+        <a href="recht/widerruf.html">Widerruf</a>
+        <a href="recht/risiko.html">Risikohinweis</a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<script src="js/tor.js"></script>
+<script>
+(function () {
+  'use strict';
+
+  var namen = { panel: 'Panel Pro öffnen', protection: 'Protection Panel öffnen' };
+
+  /* ?ziel=panel kommt von den Knöpfen der Frontpage. Nur gemerkt, um nach dem
+   * Freischalten den passenden Knopf zuerst zu zeigen; entscheiden tut es
+   * nichts, das macht die Rechteliste des Codes. */
+  var gewünscht = new URLSearchParams(location.search).get('ziel');
+
+  function zeigeTore(darf) {
+    var kasten = document.getElementById('tore');
+    kasten.innerHTML = '';
+    var liste = darf.slice();
+    if (gewünscht && liste.indexOf(gewünscht) > 0) {
+      liste.splice(liste.indexOf(gewünscht), 1);
+      liste.unshift(gewünscht);
+    }
+    liste.forEach(function (z, i) {
+      var a = document.createElement('a');
+      a.className = 'tor' + (i === 0 ? '' : ' leise');
+      a.href = Tor.ZIELE[z];
+      a.target = '_blank';
+      a.rel = 'noopener';
+      a.textContent = namen[z] || z;
+      kasten.appendChild(a);
+    });
+    kasten.hidden = false;
+    document.getElementById('eingabe').hidden = true;
+    document.getElementById('abmelden').hidden = false;
+  }
+
+  var da = Tor.zustand();
+  if (da && da.darf) {
+    document.getElementById('meldung').textContent = 'Zugang liegt vor: ' + da.name + '.';
+    document.getElementById('meldung').className = 'meldung gut';
+    zeigeTore(da.darf);
+  } else {
+    Tor.start('code', 'prüfen', 'meldung', function (treffer) {
+      zeigeTore(treffer.darf);
+    });
+  }
+
+  document.getElementById('vergessen').addEventListener('click', function (e) {
+    e.preventDefault();
+    Tor.vergessen();
+    location.href = 'zugang.html';
+  });
+})();
+</script>
+
+</body>
+</html>

@@ -1,0 +1,338 @@
+/* ============================================================================
+ * FRONT.CSS, die Design-Schicht der Frontpage.
+ * ============================================================================
+ *
+ * Angelegt 22.08.2026. REINE DESIGN-SCHICHT, VOLLSTAENDIG LOESCHBAR.
+ * Wer diese Datei entfernt, hat nackte, aber vollstaendig lesbare Seiten.
+ * Kein Text, kein Link, keine Sperre und keine Rechtsangabe haengt an ihr.
+ *
+ * Die Farbwerte sind KOPIERT aus orion-panel-pro/css/start.css (Stand
+ * 20.08.2026), damit Frontpage und Panel gleich aussehen, ohne dass die
+ * Frontpage 124 KB Panel-CSS laedt. Preis: wer die Farbwelt aendert, aendert
+ * sie an zwei Stellen. Das steht hier, damit niemand es suchen muss.
+ *
+ * KEINE ANIMATION ausser Hover. Vorgabe bleibt: schlicht.
+ */
+
+:root{
+  --grund:      #0A1220;
+  --karte:      #0E1B2A;
+  --karte-2:    #14243A;
+  --rand:       #1E3650;
+  --text:       #E8F2FC;
+  --text-leise: #85A0BD;
+  --gold:       #7FD4FF;
+  --sonar:      #3CC9F5;
+  --gruen:      #2FD3A7;
+  --tuerkis:    #7FC2B6;
+  --rot:        #FF6B85;
+  --breite:     1080px;
+}
+
+*{ box-sizing:border-box; }
+html,body{ margin:0; padding:0; }
+
+body{
+  background:var(--grund);
+  color:var(--text);
+  font-family:'Rajdhani', system-ui, -apple-system, Segoe UI, sans-serif;
+  font-size:17px;
+  line-height:1.62;
+  -webkit-font-smoothing:antialiased;
+}
+
+.hof{ max-width:var(--breite); margin:0 auto; padding:0 22px; }
+
+a{ color:var(--sonar); }
+
+/* ------------------------------------------------------------- NAVIGATION -- */
+
+.leiste{
+  border-bottom:1px solid var(--rand);
+  background:rgba(10,18,32,.92);
+  position:sticky; top:0; z-index:50;
+  backdrop-filter:blur(6px);
+}
+.leiste .hof{ display:flex; align-items:center; gap:18px; height:58px; }
+.leiste .name{
+  font-family:'Share Tech Mono', ui-monospace, monospace;
+  letter-spacing:.2em; text-transform:uppercase; font-size:13px;
+  color:var(--gold); text-decoration:none; white-space:nowrap;
+}
+.leiste nav{ margin-left:auto; display:flex; gap:16px; flex-wrap:wrap; }
+.leiste nav a{
+  color:var(--text-leise); text-decoration:none; font-size:14px;
+  letter-spacing:.05em; text-transform:uppercase;
+}
+.leiste nav a:hover{ color:var(--text); }
+
+/* -------------------------------------------------------------------- KOPF -- */
+
+.kopf{
+  border-bottom:1px solid var(--rand);
+  background:linear-gradient(180deg, #0C1626 0%, var(--grund) 100%);
+  padding:64px 0 48px;
+}
+.marke{ display:flex; align-items:center; gap:18px; margin-bottom:26px; }
+.marke svg{ width:62px; height:62px; flex:0 0 62px; }
+.marke h1{
+  font-size:36px; letter-spacing:.055em; margin:0; font-weight:700;
+  text-transform:uppercase;
+}
+.marke .unter{
+  display:block; font-family:'Share Tech Mono', ui-monospace, monospace;
+  font-size:12.5px; letter-spacing:.19em; color:var(--sonar);
+  text-transform:uppercase; margin-top:3px; font-weight:400;
+}
+.aufschlag{ font-size:20.5px; line-height:1.55; max-width:70ch; margin:0 0 22px; }
+.aufschlag b{ color:var(--gold); font-weight:600; }
+
+.merkzeile{ display:flex; flex-wrap:wrap; gap:9px; margin-top:26px; }
+.merk{
+  font-family:'Share Tech Mono', ui-monospace, monospace;
+  font-size:12px; letter-spacing:.09em; text-transform:uppercase;
+  color:var(--text-leise);
+  border:1px solid var(--rand); border-radius:3px;
+  padding:6px 11px; background:rgba(20,36,58,.5);
+}
+.merk b{ color:var(--text); }
+
+/* ---------------------------------------------------------------- ABSCHNITT -- */
+
+section{ padding:56px 0; border-bottom:1px solid rgba(30,54,80,.55); }
+section:last-of-type{ border-bottom:0; }
+
+h2{
+  font-size:26px; letter-spacing:.045em; text-transform:uppercase;
+  margin:0 0 6px; font-weight:700;
+}
+h3{ font-size:18.5px; margin:0 0 7px; letter-spacing:.02em; }
+.satz{ color:var(--sonar); margin:0 0 26px; font-size:16px; }
+p{ max-width:74ch; }
+.leise{ color:var(--text-leise); }
+
+/* ------------------------------------------------------------- ZWEI SAEULEN -- */
+
+.saeulen{ display:grid; grid-template-columns:1fr 1fr; gap:18px; margin-top:8px; }
+.saeule{
+  border:1px solid var(--rand); border-radius:5px; background:var(--karte);
+  padding:22px 22px 24px;
+}
+.saeule .rolle{
+  font-family:'Share Tech Mono', ui-monospace, monospace; font-size:11.5px;
+  letter-spacing:.18em; text-transform:uppercase; color:var(--text-leise);
+}
+.saeule.sucht{ border-top:3px solid var(--sonar); }
+.saeule.prueft{ border-top:3px solid var(--gruen); }
+.saeule.sucht .rolle{ color:var(--sonar); }
+.saeule.prueft .rolle{ color:var(--gruen); }
+.saeule p{ margin:8px 0 0; }
+
+/* -------------------------------------------------------------- BILDER-SPOT -- */
+
+.spot{ margin:30px 0 0; }
+.rahmen{
+  border:1px solid var(--rand); border-radius:5px; overflow:hidden;
+  background:var(--karte); box-shadow:0 10px 34px rgba(0,0,0,.45);
+}
+.rahmen .balken{
+  display:flex; align-items:center; gap:7px;
+  padding:8px 12px; border-bottom:1px solid var(--rand);
+  background:var(--karte-2);
+  font-family:'Share Tech Mono', ui-monospace, monospace;
+  font-size:11px; letter-spacing:.15em; text-transform:uppercase;
+  color:var(--text-leise);
+}
+.rahmen .punkt{ width:8px; height:8px; border-radius:50%; background:var(--rand); }
+.rahmen .punkt.an{ background:var(--gruen); }
+.rahmen img{ display:block; width:100%; height:auto; }
+.bildtext{
+  margin:9px 0 0; font-size:15px; color:var(--text-leise); max-width:74ch;
+}
+.bildtext b{ color:var(--text); font-weight:600; }
+
+/* Zwei Bilder nebeneinander */
+.doppel{ display:grid; grid-template-columns:1fr 1fr; gap:18px; margin-top:26px; }
+.doppel .bildtext{ font-size:14.5px; }
+
+/* ------------------------------------------------------------------ RASTER -- */
+
+.raster{ display:grid; grid-template-columns:repeat(3,1fr); gap:16px; margin-top:24px; }
+.feld{
+  border:1px solid var(--rand); border-radius:4px; background:var(--karte);
+  padding:17px 18px 19px;
+}
+.feld .kennung{
+  font-family:'Share Tech Mono', ui-monospace, monospace; font-size:10.5px;
+  letter-spacing:.16em; color:var(--tuerkis); display:block; margin-bottom:8px;
+}
+.feld p{ margin:0; font-size:15.5px; color:var(--text-leise); }
+.feld p b{ color:var(--text); font-weight:600; }
+
+/* ------------------------------------------------------------------- KETTE -- */
+
+.kette{ list-style:none; counter-reset:k; padding:0; margin:24px 0 0; }
+.kette li{
+  counter-increment:k; position:relative; padding:0 0 20px 52px;
+  border-left:1px solid var(--rand); margin-left:16px;
+}
+.kette li:last-child{ border-left-color:transparent; padding-bottom:0; }
+.kette li::before{
+  content:counter(k,decimal-leading-zero);
+  position:absolute; left:-17px; top:-2px;
+  width:34px; height:34px; border-radius:50%;
+  background:var(--karte-2); border:1px solid var(--rand);
+  color:var(--sonar); font-family:'Share Tech Mono', ui-monospace, monospace;
+  font-size:12px; display:flex; align-items:center; justify-content:center;
+}
+.kette b{ display:block; font-size:17px; letter-spacing:.02em; }
+.kette span{ display:block; color:var(--text-leise); font-size:15.5px; max-width:74ch; }
+
+/* ---------------------------------------------------------------- KLARTEXT -- */
+
+.klartext{
+  border:1px solid var(--rand); border-left:3px solid var(--rot);
+  border-radius:4px; background:var(--karte); padding:18px 22px; margin-top:22px;
+}
+.klartext ul{ margin:0; padding-left:20px; }
+.klartext li{ margin:0 0 11px; color:var(--text-leise); }
+.klartext li:last-child{ margin-bottom:0; }
+.klartext b{ color:var(--text); }
+
+/* ------------------------------------------------------------------ KNOEPFE -- */
+
+.zugang{ display:flex; flex-wrap:wrap; gap:12px; margin-top:24px; }
+.tor{
+  display:inline-block; text-decoration:none;
+  font-family:'Share Tech Mono', ui-monospace, monospace;
+  font-size:13px; letter-spacing:.14em; text-transform:uppercase;
+  padding:13px 22px; border-radius:4px;
+  background:var(--sonar); color:#06121D; border:1px solid var(--sonar);
+  font-weight:700;
+}
+.tor:hover{ background:var(--gold); border-color:var(--gold); }
+.tor.leise{ background:transparent; color:var(--text-leise); border-color:var(--rand); }
+.tor.leise:hover{ color:var(--text); border-color:var(--sonar); background:rgba(60,201,245,.07); }
+.tor.gruen{ background:var(--gruen); border-color:var(--gruen); color:#06121D; }
+.tor.gruen:hover{ background:#4FE3BC; border-color:#4FE3BC; }
+
+/* ------------------------------------------------------------------- PREISE -- */
+
+.pakete{ display:grid; grid-template-columns:repeat(3,1fr); gap:16px; margin-top:26px; }
+.paket{
+  border:1px solid var(--rand); border-radius:5px; background:var(--karte);
+  padding:22px; display:flex; flex-direction:column;
+}
+.paket.hervor{ border-color:var(--sonar); box-shadow:0 0 0 1px rgba(60,201,245,.25); }
+.paket .stufe{
+  font-family:'Share Tech Mono', ui-monospace, monospace; font-size:11px;
+  letter-spacing:.18em; text-transform:uppercase; color:var(--tuerkis);
+}
+.paket .preis{ font-size:38px; font-weight:700; letter-spacing:.02em; margin:10px 0 0; }
+.paket .preis small{ font-size:14px; color:var(--text-leise); font-weight:400; }
+.paket .ust{ font-size:13px; color:var(--text-leise); margin:2px 0 16px; }
+.paket ul{ list-style:none; padding:0; margin:0 0 20px; }
+.paket li{ font-size:15.5px; color:var(--text-leise); padding:5px 0 5px 20px; position:relative; }
+.paket li::before{ content:"+"; position:absolute; left:0; color:var(--gruen); }
+.paket li.nein::before{ content:"-"; color:var(--rot); }
+.paket .tor{ margin-top:auto; text-align:center; }
+
+/* --------------------------------------------------------------- SPERRE/TOR -- */
+
+.tafel{
+  max-width:520px; margin:0 auto; border:1px solid var(--rand); border-radius:6px;
+  background:var(--karte); padding:30px 28px;
+}
+.tafel h2{ font-size:21px; }
+.tafel input{
+  width:100%; padding:13px 14px; margin:14px 0 10px;
+  background:#08111D; border:1px solid var(--rand); border-radius:4px;
+  color:var(--text); font-family:'Share Tech Mono', ui-monospace, monospace;
+  font-size:16px; letter-spacing:.12em; text-transform:uppercase;
+}
+.tafel input:focus{ outline:none; border-color:var(--sonar); }
+.tafel button{
+  width:100%; padding:13px; border-radius:4px; cursor:pointer;
+  background:var(--sonar); color:#06121D; border:0; font-weight:700;
+  font-family:'Share Tech Mono', ui-monospace, monospace;
+  font-size:13px; letter-spacing:.14em; text-transform:uppercase;
+}
+.tafel button:hover{ background:var(--gold); }
+.meldung{ min-height:22px; margin:12px 0 0; font-size:15px; }
+.meldung.fehler{ color:var(--rot); }
+.meldung.gut{ color:var(--gruen); }
+
+/* ------------------------------------------------------------------ RECHTS -- */
+
+.rechtstext{ padding:44px 0 60px; }
+.rechtstext h1{ font-size:28px; text-transform:uppercase; letter-spacing:.04em; margin:0 0 4px; }
+.rechtstext h2{ font-size:19px; margin:34px 0 8px; text-transform:none; letter-spacing:.01em; }
+.rechtstext h3{ font-size:16.5px; margin:20px 0 6px; color:var(--sonar); }
+.rechtstext p, .rechtstext li{ color:#CBDBEC; }
+.rechtstext li{ margin-bottom:7px; }
+.rechtstext .stand{
+  font-family:'Share Tech Mono', ui-monospace, monospace; font-size:12px;
+  letter-spacing:.14em; text-transform:uppercase; color:var(--text-leise);
+}
+.luecke{
+  background:rgba(255,107,133,.12); border:1px dashed var(--rot);
+  border-radius:3px; padding:1px 7px; color:var(--rot);
+  font-family:'Share Tech Mono', ui-monospace, monospace; font-size:13px;
+}
+.hinweis{
+  border:1px solid var(--rand); border-left:3px solid var(--gold);
+  background:var(--karte); border-radius:4px; padding:15px 20px; margin:22px 0;
+}
+.hinweis p{ margin:0; }
+
+/* -------------------------------------------------------------------- FUSS -- */
+
+.fuss{ border-top:1px solid var(--rand); padding:34px 0 46px; background:#08111D; }
+.fuss .reihen{ display:flex; flex-wrap:wrap; gap:34px; margin-bottom:22px; }
+.fuss .spalte h4{
+  font-family:'Share Tech Mono', ui-monospace, monospace; font-size:11px;
+  letter-spacing:.18em; text-transform:uppercase; color:var(--text-leise);
+  margin:0 0 10px;
+}
+.fuss .spalte a{ display:block; color:#B9CDE2; text-decoration:none; font-size:15px; padding:2px 0; }
+.fuss .spalte a:hover{ color:var(--sonar); }
+.fuss p{ color:var(--text-leise); font-size:14.5px; margin:6px 0; }
+.fuss code{
+  font-family:'Share Tech Mono', ui-monospace, monospace; font-size:13px;
+  color:var(--tuerkis);
+}
+
+/* ------------------------------------------------------------------ SCHMAL -- */
+
+@media (max-width: 900px){
+  .saeulen, .doppel, .raster, .pakete{ grid-template-columns:1fr; }
+  .marke h1{ font-size:27px; }
+  .aufschlag{ font-size:18px; }
+  section{ padding:42px 0; }
+  .leiste nav{ gap:12px; }
+  .leiste nav a{ font-size:13px; }
+}
+@media (max-width: 640px){
+  .leiste .hof{ height:auto; padding-top:10px; padding-bottom:10px; flex-wrap:wrap; }
+  .leiste nav{ margin-left:0; width:100%; }
+}
+
+/* ------------------------------------------------------- ABGESCHALTETE TEILE --
+ * Ein Knopf, der nicht funktioniert, muss auch so aussehen. Sonst haelt ihn
+ * jemand fuer kaputt statt fuer bewusst abgeschaltet.
+ */
+
+.tor[disabled], button[disabled]{
+  background:transparent; color:var(--text-leise);
+  border:1px dashed var(--rand); cursor:not-allowed;
+}
+.tor[disabled]:hover, button[disabled]:hover{
+  background:transparent; color:var(--text-leise); border-color:var(--rand);
+}
+
+/* Ankreuzfelder duerfen die Breitenregel der Eingabefelder nicht erben,
+ * sonst werden sie bildschirmbreit. */
+.tafel input[type="checkbox"], .tafel input[type="radio"]{
+  width:auto; margin:0 8px 0 0; vertical-align:middle;
+}
+.tafel label{ display:inline; color:var(--text-leise); font-size:15.5px; }

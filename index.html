@@ -1,0 +1,413 @@
+<!doctype html>
+<html lang="de">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Orion, zwei Programme für Kursabgleich und Nachrechnung</title>
+<meta name="description" content="Orion Panel Pro sucht Kursunterschiede zwischen vier Boersen. Orion Protection Panel rechnet jeden Fund unabhaengig nach. Zwei getrennte Programme, ein Zweck.">
+<meta name="robots" content="noindex, nofollow">
+<link rel="icon" type="image/svg+xml" href="bilder/logo-protection.svg">
+<link rel="stylesheet" href="schrift/schrift.css?v=1">
+<link rel="stylesheet" href="css/front.css?v=1">
+
+<!-- =============================================================================
+     INDEX.HTML, die Frontpage. Angelegt 22.08.2026.
+
+     ZWECK: eine oeffentliche Seite VOR den beiden Programmen. Sie erklaert,
+     zeigt echte Bildschirmfotos und fuehrt zu den Zugaengen. Die Programme
+     selbst bleiben unangetastet, dieses Verzeichnis ist ein eigenes Projekt.
+
+     KEIN DATENZUGRIFF: diese Seite spricht weder mit Supabase noch mit der
+     Bridge. Kein Fund, kein Kurs, keine Zahl aus dem Betrieb steht hier.
+     Die Bildschirmfotos sind Standbilder vom 22.08.2026.
+
+     BILDER: aufgenommen aus den laufenden Programmen, nicht nachgezeichnet.
+     ========================================================================== -->
+</head>
+<body>
+
+<div class="leiste">
+  <div class="hof">
+    <a class="name" href="index.html">Orion</a>
+    <nav>
+      <a href="#panel">Panel Pro</a>
+      <a href="#protection">Protection</a>
+      <a href="#zusammen">Ablauf</a>
+      <a href="preise.html">Preise</a>
+      <a href="zugang.html">Zugang</a>
+    </nav>
+  </div>
+</div>
+
+<header class="kopf">
+  <div class="hof">
+
+    <div class="marke">
+      <svg viewBox="0 0 96 96" aria-hidden="true">
+        <circle cx="48" cy="48" r="44" fill="none" stroke="var(--gold)" stroke-width="2.5"/>
+        <circle cx="48" cy="48" r="37" fill="none" stroke="var(--sonar)" stroke-width="1.2" stroke-dasharray="6 7" opacity=".7"/>
+        <circle cx="48" cy="48" r="28" fill="none" stroke="var(--sonar)" stroke-width="1" opacity=".45"/>
+        <path d="M48 2 v12 M48 82 v12 M2 48 h12 M82 48 h12" stroke="var(--gold)" stroke-width="2.5"/>
+        <path d="M48 24 L54.5 42 L73 42 L58.5 53 L64 71 L48 60 L32 71 L37.5 53 L23 42 L41.5 42 Z" fill="var(--sonar)"/>
+        <circle cx="66" cy="32" r="2.6" fill="var(--gold)"/>
+      </svg>
+      <h1>Orion
+        <span class="unter">Zwei Programme &middot; getrennt gebaut &middot; ein Zweck</span>
+      </h1>
+    </div>
+
+    <p class="aufschlag">
+      Zwei B&ouml;rsen k&ouml;nnen denselben Ausgang desselben Ereignisses
+      <b>unterschiedlich bepreisen</b>. Das eine Programm sucht diese Stellen
+      rund um die Uhr. Das andere rechnet jeden Fund noch einmal nach, mit
+      eigenem Code und eigener Datenbank, <b>bevor Geld fließt</b>.
+    </p>
+
+    <p class="leise">Getrennt gebaut ist hier kein Zufall. Ein Programm, das
+      sich selbst pr&uuml;ft, pr&uuml;ft gar nichts.</p>
+
+    <div class="merkzeile">
+      <span class="merk">Vier <b>B&ouml;rsen</b></span>
+      <span class="merk">Takt <b>2 Minuten</b></span>
+      <span class="merk"><b>306</b> Selbsttests</span>
+      <span class="merk">H&auml;rtetest <b>13 von 13</b></span>
+      <span class="merk">Im Betrieb seit <b>09.08.2026</b></span>
+    </div>
+
+    <div class="zugang">
+      <a class="tor" href="#panel">Was die Programme tun</a>
+      <a class="tor leise" href="zugang.html">Ich habe einen Code</a>
+    </div>
+
+  </div>
+</header>
+
+<main>
+
+  <!-- ======================================================== ZWEI PROGRAMME -->
+  <section>
+    <div class="hof">
+      <h2>Zwei Programme, zwei Aufgaben</h2>
+      <p class="satz">Das eine sucht. Das andere glaubt dem ersten kein Wort.</p>
+
+      <div class="saeulen">
+        <div class="saeule sucht">
+          <span class="rolle">Programm 1 &middot; sucht</span>
+          <h3>Orion Panel Pro</h3>
+          <p>Vergleicht laufend die Kurse von vier B&ouml;rsen, jedes Buch gegen
+            jedes. Findet es zwei Kurse, die zusammen unter eins liegen, legt es
+            den Fund samt vollem Rechenweg ab und meldet ihn. Gesucht wird auf
+            einem Server, nicht im Browser.</p>
+        </div>
+        <div class="saeule prueft">
+          <span class="rolle">Programm 2 &middot; pr&uuml;ft</span>
+          <h3>Orion Protection Panel</h3>
+          <p>Nimmt den Bericht eines Fundes und rechnet ihn von vorne durch,
+            mit einer <b>zweiten, eigenst&auml;ndigen Fassung</b> derselben
+            Formeln. Kein gemeinsamer Code, keine gemeinsame Datenbank. Deckt
+            sich die Zahl, ist sie belastbar. Deckt sie sich nicht, wird die
+            Stelle genannt.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================================= PANEL PRO -->
+  <section id="panel">
+    <div class="hof">
+      <h2>Orion Panel Pro</h2>
+      <p class="satz">Der Gefechtsstand. Vier B&ouml;rsen, ein Raster.</p>
+
+      <p>Der schwierige Teil ist nicht das Rechnen. Der schwierige Teil ist die
+        Frage, ob zwei Eintr&auml;ge aus zwei B&uuml;chern &uuml;berhaupt
+        dasselbe Ereignis meinen. Dieselbe Mannschaft hei&szlig;t bei jedem
+        Anbieter anders, dieselbe Liga tr&auml;gt eine andere Kennung, und
+        dasselbe Zeitfeld bedeutet mal den Anpfiff und mal eine
+        Abrechnungsfrist Tage sp&auml;ter. Jede Paarung muss deshalb
+        <b>sieben H&uuml;rden</b> nehmen, bevor sie gerechnet wird.</p>
+
+      <div class="spot">
+        <div class="rahmen">
+          <div class="balken"><span class="punkt an"></span> Gefechtsstand &middot; Startbild</div>
+          <img src="bilder/panel-kopf.png" alt="Startbild des Orion Panel Pro mit Bedienknoepfen und Statusanzeige" loading="lazy">
+        </div>
+        <p class="bildtext">Alles, was man braucht, liegt oben:
+          <b>Sofort ablesen</b>, Filter, Meldungen, Ton, Animationsstufe. Daneben
+          jede Erkl&auml;rseite, die es gibt. Rechts oben die Sonaruhr, die zeigt,
+          wie alt der letzte Durchlauf ist.</p>
+      </div>
+
+      <div class="spot">
+        <div class="rahmen">
+          <div class="balken"><span class="punkt an"></span> Lage &middot; vier Bereiche</div>
+          <img src="bilder/panel-lage.png" alt="Radar, Gefechtsstand-Kacheln und Sonarzaehler des Panels" loading="lazy">
+        </div>
+        <p class="bildtext">Der Zustand in einem Blick: beobachtete M&auml;rkte,
+          Alter des letzten Scans, Dauer des Durchlaufs. Ein Bereich ohne Daten
+          <b>meldet das</b>, statt gr&uuml;n zu leuchten. Ein stiller Ausfall ist
+          schlimmer als ein lauter.</p>
+      </div>
+
+      <div class="spot">
+        <div class="rahmen">
+          <div class="balken"><span class="punkt an"></span> Fundverlauf &middot; 24 Stunden</div>
+          <img src="bilder/panel-kurve.png" alt="Fundverlauf des Panels als Balkenkurve ueber 24 Stunden" loading="lazy">
+        </div>
+        <p class="bildtext">Was nicht mehr gilt, verschwindet nicht, es wandert
+          in den Verlauf. Gez&auml;hlt wird nach <b>erstem Auftauchen</b>, und
+          neben der Gesamtzahl steht immer, wie viele davon die Nachpr&uuml;fung
+          bestanden haben und wie viele nicht.</p>
+      </div>
+
+      <div class="spot">
+        <div class="rahmen">
+          <div class="balken"><span class="punkt an"></span> Die B&uuml;cher</div>
+          <img src="bilder/panel-buecher.png" alt="Tabelle der vier Boersen mit Aktualitaet, Umfang und Tempo" loading="lazy">
+        </div>
+        <p class="bildtext">Jede Quelle mit <b>Alter, Umfang und Tempo</b>. Auch
+          die unbequeme Wahrheit steht da: welches Buch die Engstelle ist und
+          warum. Ein Buch h&auml;ngt an einem Rechner zuhause, weil es
+          Rechenzentren aussperrt. Das steht als Satz da und nicht in einer
+          Fu&szlig;note.</p>
+      </div>
+
+      <div class="spot">
+        <div class="rahmen">
+          <div class="balken"><span class="punkt an"></span> Paarungsmatrix</div>
+          <img src="bilder/panel-matrix.png" alt="Matrix aller Boersenpaarungen mit bester Rendite je Feld" loading="lazy">
+        </div>
+        <p class="bildtext">Jedes Buch gegen jedes, mit der besten Rendite je
+          Feld. Daneben in Klartext, warum ein Feld leer ist. <b>Leer ist eine
+          Aussage</b>, kein Fehler: eine Paarung entsteht erst, wenn dieselbe
+          Frage auf beiden B&ouml;rsen existiert und beide Seiten handelbare
+          Kurse haben.</p>
+      </div>
+
+      <div class="raster">
+        <div class="feld"><span class="kennung">ORB_01</span>
+          <p><b>Jedes Buch gegen jedes.</b> Nicht gegen ein Leitbuch. Eine
+            Absicherung besteht immer aus genau zwei B&uuml;chern und genau zwei
+            Ausg&auml;ngen derselben Frage.</p></div>
+        <div class="feld"><span class="kennung">ORB_02</span>
+          <p><b>L&auml;uft ohne offenen Browser.</b> Gesucht wird auf dem Server,
+            im festen Takt, auch nachts und mit zugeklapptem Laptop.</p></div>
+        <div class="feld"><span class="kennung">ORB_03</span>
+          <p><b>Eine Wache, die nicht glaubt.</b> Die zweite Stufe leitet jede
+            H&uuml;rde jede Minute neu aus der gespeicherten Zeile ab.</p></div>
+        <div class="feld"><span class="kennung">ORB_04</span>
+          <p><b>Jede Zahl nachrechenbar.</b> Effektivquoten nach den echten
+            Geb&uuml;hren des jeweiligen Buchs, Kehrwertsumme, Aufteilung, alles
+            auf 1.000 vorgerechnet.</p></div>
+        <div class="feld"><span class="kennung">ORB_05</span>
+          <p><b>Meldung nur nach Pr&uuml;fung.</b> Nachricht geht erst raus, wenn
+            das Urteil der Wache leer ist und der Fund eine Bew&auml;hrungszeit
+            &uuml;berstanden hat.</p></div>
+        <div class="feld"><span class="kennung">ORB_06</span>
+          <p><b>Beide W&auml;hrungen, immer.</b> Zwei B&uuml;cher f&uuml;hren
+            Dollar, zwei Euro. Jeder Betrag steht in beiden, nie nur in
+            einer.</p></div>
+      </div>
+
+      <div class="zugang">
+        <a class="tor" href="zugang.html?ziel=panel">Panel Pro &ouml;ffnen</a>
+        <a class="tor leise" href="https://harryclaude-hub.github.io/orion-panel-pro/start.html" target="_blank" rel="noopener">Ausf&uuml;hrliche Beschreibung</a>
+      </div>
+      <p class="bildtext">Der Gefechtsstand steht hinter einem Kennwort. Ohne
+        Zugang sieht man die Beschreibung, nicht die Funde.</p>
+
+    </div>
+  </section>
+
+  <!-- ====================================================== PROTECTION PANEL -->
+  <section id="protection">
+    <div class="hof">
+      <h2>Orion Protection Panel</h2>
+      <p class="satz">Das Panel sucht. Dieses Programm sch&uuml;tzt.</p>
+
+      <p>Ein Fund ist eine Behauptung, bis ihn jemand nachgerechnet hat. Hier
+        wird der Bericht eingef&uuml;gt, zerlegt und Schritt f&uuml;r Schritt
+        neu gerechnet: Effektivquoten, Kehrwertsumme, Aufteilung, Geb&uuml;hren
+        in echtem Geld. Dazu Querproben, die der Bericht nicht liefert, sondern
+        die das Programm <b>selbst beim Anbieter holt</b>: Geb&uuml;hrensatz,
+        handelbare Menge, Marktfrage hinter dem Link, Anpfiffzeit.</p>
+
+      <div class="spot">
+        <div class="rahmen">
+          <div class="balken"><span class="punkt an"></span> Pr&uuml;fstand &middot; Startbild</div>
+          <img src="bilder/prot-kopf.png" alt="Startbild des Orion Protection Panel mit Eingabefeld fuer den Bericht" loading="lazy">
+        </div>
+        <p class="bildtext">Drei Urteile, nie zwei: <b>deckt sich</b>, weicht ab,
+          nicht pr&uuml;fbar. Der dritte Fall ist der wichtige. Was von au&szlig;en
+          nicht pr&uuml;fbar ist, wird als nicht pr&uuml;fbar ausgewiesen und
+          nicht durchgewinkt.</p>
+      </div>
+
+      <div class="spot">
+        <div class="rahmen">
+          <div class="balken"><span class="punkt an"></span> Rechner zum Nachrechnen</div>
+          <img src="bilder/prot-rechner.png" alt="Rechner fuer Quotenformate, Marge, Erwartungswert und Dutching" loading="lazy">
+        </div>
+        <p class="bildtext">Quotenformate, Marge und faire Quoten, Erwartungswert
+          und Kelly, Aufteilung &uuml;ber drei und mehr Ausg&auml;nge. Dieselben
+          Rechenarten, die gro&szlig;e Dienste anbieten, hier <b>einzeln
+          nachvollziehbar</b> und ohne Einfluss auf das Urteil.</p>
+      </div>
+
+      <div class="spot">
+        <div class="rahmen">
+          <div class="balken"><span class="punkt an"></span> Rechen-Werkstatt</div>
+          <img src="bilder/prot-werk.png" alt="Rechen-Werkstatt mit frei aenderbaren Kursen, Gebuehren und Formelzeilen" loading="lazy">
+        </div>
+        <p class="bildtext">Jede Zahl frei &auml;nderbar, jede Formel sichtbar
+          daneben. Kurs, Geb&uuml;hr, Einsatz, Rundung. Man sieht sofort, was
+          <b>eine Rundung auf ganze Euro</b> von der Rendite &uuml;brig
+          l&auml;sst. Gemessenes Beispiel: 2,53 Prozent werden zu 1,94.</p>
+      </div>
+
+      <div class="raster">
+        <div class="feld"><span class="kennung">PRO_01</span>
+          <p><b>Zwei getrennte Ampeln.</b> Rechnung richtig ist nicht dasselbe wie
+            Gewinn. Ein Fund kann sauber gerechnet und trotzdem nichts wert
+            sein.</p></div>
+        <div class="feld"><span class="kennung">PRO_02</span>
+          <p><b>Geldfluss in echtem Geld.</b> Einsatz, brutto, Geb&uuml;hr in
+            Euro, netto, Gewinn, je Seite getrennt und am Ende der schlechtere
+            Ausgang als garantiert.</p></div>
+        <div class="feld"><span class="kennung">PRO_03</span>
+          <p><b>Paarungspr&uuml;fung.</b> Eigene Fassung der Sperren: Jugend,
+            Reserve, Frauen, Anpfiffabstand, Liga. Zwei verschiedene Spiele
+            werden als solche benannt.</p></div>
+        <div class="feld"><span class="kennung">PRO_04</span>
+          <p><b>Herkunft jeder Angabe.</b> Aus dem Bericht, beim Anbieter
+            nachgefragt oder selbst gerechnet. Mit Link auf die Abfrage.</p></div>
+        <div class="feld"><span class="kennung">PRO_05</span>
+          <p><b>Rechenbl&auml;tter auf hellem Papier.</b> Formel oben, jedes
+            Zwischenergebnis darunter, eigene Zahl gegen Panel-Zahl. Kontrast
+            gemessen: 13,3 zu 1.</p></div>
+        <div class="feld"><span class="kennung">PRO_06</span>
+          <p><b>306 Selbsttests, H&auml;rtetest 13 von 13.</b> Absichtlich
+            verf&auml;lschte Berichte, alle erkannt, null Fehlalarme bei
+            korrekten Berichten.</p></div>
+      </div>
+
+      <div class="zugang">
+        <a class="tor gruen" href="https://harryclaude-hub.github.io/orion-protection-panel/" target="_blank" rel="noopener">Protection Panel &ouml;ffnen</a>
+      </div>
+      <p class="bildtext">Der Pr&uuml;fer ist derzeit <b>offen erreichbar</b>.
+        Er zeigt keine Funde, er rechnet nur nach, was man ihm gibt.</p>
+
+    </div>
+  </section>
+
+  <!-- ============================================================== ZUSAMMEN -->
+  <section id="zusammen">
+    <div class="hof">
+      <h2>Der Weg eines Fundes</h2>
+      <p class="satz">Von der Quelle bis zu der Zahl, auf die man sich verl&auml;sst.</p>
+
+      <ol class="kette">
+        <li><b>Sammeln</b>
+          <span>Jede B&ouml;rse hat ihren eigenen Takt und ihre eigene
+            Schnittstelle. Eine davon sperrt Rechenzentren aus und wird deshalb
+            &uuml;ber einen Rechner zuhause angebunden.</span></li>
+        <li><b>Paaren und rechnen</b>
+          <span>Sieben H&uuml;rden an einer einzigen Stelle im Code, danach die
+            Rechnung mit den echten Geb&uuml;hren. Zwei Wege mit zwei
+            Ma&szlig;st&auml;ben w&auml;ren genau die Drift, die hier schon Geld
+            gekostet hat.</span></li>
+        <li><b>Nachwachen</b>
+          <span>Jede Minute, unabh&auml;ngig, aus der gespeicherten Zeile heraus.
+            Auch eine beim Paaren saubere Zeile kann inzwischen faul sein: der
+            Anpfiff ist vorbei, die Kurse sind weitergelaufen.</span></li>
+        <li><b>Melden</b>
+          <span>Erst mit leerem Urteil, gepr&uuml;fter Kurssumme und
+            &uuml;berstandener Bew&auml;hrungszeit. Lieber eine Meldung weniger
+            als eine falsche.</span></li>
+        <li><b>Nachrechnen im zweiten Programm</b>
+          <span>Bericht kopieren, in das Protection Panel einf&uuml;gen, eigene
+            Zweitrechnung samt Anbieterabfrage. Erst wenn beide Fassungen
+            dieselbe Zahl zeigen, ist die Zahl belastbar.</span></li>
+      </ol>
+    </div>
+  </section>
+
+  <!-- ============================================================== KLARTEXT -->
+  <section>
+    <div class="hof">
+      <h2>Klartext</h2>
+      <p class="satz">Was diese Programme ausdr&uuml;cklich nicht tun.</p>
+
+      <div class="klartext">
+        <ul>
+          <li><b>Sie setzen nichts.</b> Kein Geld wird bewegt, kein Auftrag
+            ausgef&uuml;hrt, kein schreibender Zugang zu irgendeinem Konto. Es
+            werden Kurse gelesen und Rechnungen gemacht.</li>
+          <li><b>Sie versprechen nichts.</b> Eine Zahl auf einer Karte ist eine
+            Rechnung zum Kursstand von jetzt, kein Ergebnis. Kurse laufen weiter,
+            oft w&auml;hrend man hinsieht.</li>
+          <li><b>Sie verschweigen keinen Rest.</b> Wo eine Absicherung zerfallen
+            kann, weil zwei B&uuml;cher denselben Abbruch verschieden werten,
+            steht das auf der Karte und nicht in einer Fu&szlig;note.</li>
+          <li><b>Sie behaupten nicht, alles gemessen zu haben.</b> Was ungemessen
+            ist, wird als ungemessen gekennzeichnet.</li>
+          <li><b>Sie sind keine Finanzberatung und kein Gl&uuml;cksspielangebot.</b>
+            Es sind Rechenwerkzeuge. Was jemand mit einer Zahl macht, ist seine
+            eigene Entscheidung und sein eigenes Risiko.</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================================================================ PREISE -->
+  <section id="preise-kurz">
+    <div class="hof">
+      <h2>Zugang und Preise</h2>
+      <p class="satz">Heute per Code. Sp&auml;ter per Zugangsschl&uuml;ssel im Monatsbezug.</p>
+
+      <p>Der Zugang ist derzeit <b>nicht k&auml;uflich</b>. Es gibt keinen
+        Bestellknopf, keine Kasse und keinen Zahlungsdienstleister im Spiel.
+        Wer einen Code hat, kommt rein, wer keinen hat, sieht diese Seite. Die
+        Preistafel steht schon da, weil die Struktur stehen soll, bevor sie
+        gebraucht wird.</p>
+
+      <div class="zugang">
+        <a class="tor leise" href="preise.html">Preistafel ansehen</a>
+        <a class="tor" href="zugang.html">Code eingeben</a>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<footer class="fuss">
+  <div class="hof">
+    <div class="reihen">
+      <div class="spalte">
+        <h4>Programme</h4>
+        <a href="#panel">Orion Panel Pro</a>
+        <a href="#protection">Orion Protection Panel</a>
+        <a href="zugang.html">Zugang</a>
+        <a href="preise.html">Preise</a>
+      </div>
+      <div class="spalte">
+        <h4>Rechtliches</h4>
+        <a href="recht/impressum.html">Impressum</a>
+        <a href="recht/datenschutz.html">Datenschutz</a>
+        <a href="recht/agb.html">AGB</a>
+        <a href="recht/widerruf.html">Widerruf</a>
+        <a href="recht/risiko.html">Risikohinweis</a>
+        <a href="recht/cookies.html">Cookies und Speicher</a>
+      </div>
+      <div class="spalte">
+        <h4>Stand</h4>
+        <p>Bildschirmfotos vom <code>22.08.2026</code></p>
+        <p>Aus den laufenden Programmen aufgenommen, nicht nachgezeichnet.</p>
+      </div>
+    </div>
+    <p>Diese Seite ist statisch und fragt <b>keine</b> Betriebsdaten ab. Sie
+      setzt keine Cookies und bindet nichts von fremden Servern ein.</p>
+  </div>
+</footer>
+
+</body>
+</html>

@@ -1,0 +1,8 @@
+# Diese Seite soll erreichbar, aber nicht auffindbar sein.
+# Das Repo muss oeffentlich sein, damit GitHub Pages beim Free-Konto ueberhaupt
+# ausliefert. Sichtbarkeit des Repos und Auffindbarkeit der Seite sind zwei
+# verschiedene Dinge: hier wird die zweite abgeschaltet.
+# Zusaetzlich traegt JEDE Seite <meta name="robots" content="noindex, nofollow">.
+# Wer den Link hat, kommt rein. Suchmaschinen sollen ihn nicht verteilen.
+User-agent: *
+Disallow: /
