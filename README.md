@@ -79,8 +79,16 @@ Suchbefehl:
 grep -rn "luecke" --include=*.html .
 ```
 
-## Veroeffentlichen
+## Veroeffentlicht
 
-Noch nicht geschehen. Vorgesehen ist ein eigenes Repo und spaeter eine eigene
-Domain. Solange nichts gepusht ist, aendert diese Seite an den beiden laufenden
-Programmen nichts.
+Live: <https://harryclaude-hub.github.io/orion-start/>
+Repo: Harryclaude-hub/orion-start, **oeffentlich**, seit 22.08.2026.
+
+Oeffentlich muss es sein, weil GitHub Pages beim Free-Konto nur oeffentliche
+Repos ausliefert. **Erreichbar ist nicht dasselbe wie auffindbar**: `robots.txt`
+sperrt alle Suchmaschinen aus, und jede Seite traegt zusaetzlich
+`<meta name="robots" content="noindex, nofollow">`. Wer den Link hat, kommt
+rein. Wer sucht, findet nichts.
+
+Was daraus folgt und niemand vergessen darf: alles in diesem Repo ist lesbar.
+Deshalb steht hier kein Code im Klartext, kein Schluessel und kein Kennwort.
