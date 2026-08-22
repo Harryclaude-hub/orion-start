@@ -350,3 +350,98 @@ html[data-anim="3"] .radar{ animation:puls 9s ease-in-out infinite alternate; }
 .plakette::before{ transition:width .7s ease .2s; }
 html.js-tiefe .steigt .plakette::before{ width:0; }
 html.js-tiefe .steigt.da .plakette::before{ width:26px; }
+
+/* ============================================================================
+ * DAS 3D-KOPFSTUECK, 23.08.2026. Design-Schicht 2, loeschbar.
+ * ============================================================================
+ *
+ * Eine Drahtkugel im Kopf der Startseite: sechs Laengsringe, ein Aequator,
+ * zwei Breitenringe, ein Kern, ein umlaufender Kontakt. Das klassische
+ * CSS-Muster fuer eine 3D-Kugel, selbst gebaut statt fremder Vorlage, weil
+ * diese Seite nichts von fremden Servern laedt.
+ *
+ * KOSTENREGEL wie immer: die Kugel ist EIN transform-Takt auf dem Eltern-
+ * element (rotateY, 34 s), alles andere steht in einem 3D-Raum
+ * (preserve-3d) und dreht mit, ohne eigene Animation. Kein WebGL, kein
+ * Bild, kein Skript. Stufe 1 und Systemruhe halten sie an, unter 1100 px
+ * Breite faellt sie weg, weil sie dort dem Text im Weg stuende.
+ */
+
+.kopf .hof{ position:relative; }
+
+.held3d{
+  position:absolute; right:26px; top:50%;
+  width:290px; height:290px;
+  transform:translateY(-50%);
+  perspective:1000px; pointer-events:none;
+}
+.globus{
+  position:absolute; inset:0;
+  transform-style:preserve-3d;
+  animation:globusdreh 34s linear infinite;
+}
+@keyframes globusdreh{
+  from{ transform:rotateX(-16deg) rotateY(0deg); }
+  to  { transform:rotateX(-16deg) rotateY(360deg); }
+}
+
+/* Laengsringe: derselbe Kreis, sechsmal um die Hochachse gedreht. */
+.g-ring{
+  position:absolute; inset:0; border-radius:50%;
+  border:1px solid rgba(60,201,245,.30);
+}
+.g-ring.g1{ transform:rotateY(0deg); }
+.g-ring.g2{ transform:rotateY(30deg); }
+.g-ring.g3{ transform:rotateY(60deg); border-color:rgba(60,201,245,.42); }
+.g-ring.g4{ transform:rotateY(90deg); }
+.g-ring.g5{ transform:rotateY(120deg); }
+.g-ring.g6{ transform:rotateY(150deg); }
+
+/* Aequator und zwei Breitenringe: flach gelegt, die oberen kleiner und
+ * aus der Mitte geschoben, wie es die Kugelform verlangt. */
+.g-aequator{
+  position:absolute; inset:0; border-radius:50%;
+  border:1.4px solid rgba(127,212,255,.5);
+  transform:rotateX(90deg);
+}
+.g-breite{
+  position:absolute; inset:0; border-radius:50%;
+  border:1px solid rgba(60,201,245,.26);
+}
+.g-breite.oben{  transform:rotateX(90deg) translateZ(82px)  scale(.66); }
+.g-breite.unten{ transform:rotateX(90deg) translateZ(-82px) scale(.66); }
+
+/* Der umlaufende Kontakt: sitzt auf dem Aequator und faehrt mit der
+ * Drehung des Ganzen mit, ohne eigene Animation. */
+.g-kontakt{
+  position:absolute; top:50%; left:-3.5px;
+  width:7px; height:7px; border-radius:50%;
+  transform:translateY(-50%);
+  background:var(--gruen);
+  box-shadow:0 0 10px rgba(47,211,167,.9);
+}
+
+/* Der Kern: eine stehende Glut in der Mitte, dreht nicht mit dem Draht. */
+.g-kern{
+  position:absolute; left:50%; top:50%;
+  width:58px; height:58px; border-radius:50%;
+  transform:translate(-50%,-50%);
+  background:radial-gradient(circle at 42% 38%,
+    rgba(127,212,255,.55) 0%, rgba(60,201,245,.18) 45%, transparent 72%);
+}
+/* Standring am Boden, gibt der Kugel einen Ort statt eines Schwebens. */
+.held3d::after{
+  content:''; position:absolute; left:50%; bottom:-26px;
+  width:210px; height:44px; border-radius:50%;
+  transform:translateX(-50%);
+  border:1px dashed rgba(60,201,245,.16);
+  background:radial-gradient(ellipse at center, rgba(60,201,245,.06), transparent 70%);
+}
+
+html[data-anim="1"] .globus{ animation:none !important; }
+html[data-anim="3"] .globus{ animation-duration:22s; }
+html[data-anim="3"] .g-kern{ animation:puls 5s ease-in-out infinite alternate; }
+@media (prefers-reduced-motion: reduce){
+  .globus, .g-kern{ animation:none !important; }
+}
+@media (max-width: 1100px){ .held3d{ display:none; } }

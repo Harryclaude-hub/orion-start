@@ -468,3 +468,79 @@ a:hover{ color:var(--gold); }
   .feld, .rahmen{ transition:none; }
   .feld:hover{ transform:none; }
 }
+
+/* ============================================================================
+ * DAS ZEICHENSYSTEM DER KNOEPFE, 23.08.2026. Design-Schicht 1, loeschbar.
+ * ============================================================================
+ *
+ * Jeder Knopf traegt links ein Zeichen, das sagt, WOHIN er fuehrt, nicht nur
+ * was draufsteht. Die Zuordnung laeuft ueber das Ziel (href), NICHT ueber
+ * neue Klassen im HTML: kein einziger Knopf wurde dafuer angefasst, und wer
+ * diese Datei loescht, hat dieselben Knoepfe ohne Zeichen.
+ *
+ * Technik: die Zeichen sind kleine SVG-Masken (data:-Adressen, nichts wird
+ * nachgeladen). Eine Maske nimmt die aktuelle Textfarbe an, deshalb passt
+ * dasselbe Zeichen auf helle und dunkle Knoepfe, ohne zwei Fassungen.
+ *
+ * Die Familie: Linienstaerke 2.2, rund gekappt, 24er-Raster. Wer ein Zeichen
+ * ergaenzt, haelt sich daran, sonst faellt es aus der Reihe.
+ */
+
+:root{
+  --ik-pfeil:      url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='black' stroke-width='2.2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M4 12h14M12 6l6 6-6 6'/%3E%3C/svg%3E");
+  --ik-schluessel: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='black' stroke-width='2.2' stroke-linecap='round' stroke-linejoin='round'%3E%3Ccircle cx='7.5' cy='15.5' r='4'/%3E%3Cpath d='M10.5 12.5L20 3M15.5 4.5l3 3M12.5 7.5l2.5 2.5'/%3E%3C/svg%3E");
+  --ik-liste:      url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='black' stroke-width='2.2' stroke-linecap='round'%3E%3Cpath d='M5 6h14M5 12h14M5 18h9'/%3E%3C/svg%3E");
+  --ik-funk:       url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='black' stroke-width='2.2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M4.5 13a7.5 7.5 0 0 1 15 0'/%3E%3Crect x='3.5' y='13' width='4.4' height='6.4' rx='1.4'/%3E%3Crect x='16.1' y='13' width='4.4' height='6.4' rx='1.4'/%3E%3C/svg%3E");
+  --ik-frage:      url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='black' stroke-width='2.2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M8.6 9a3.4 3.4 0 1 1 5.2 2.9c-1 .7-1.8 1.4-1.8 2.7'/%3E%3Cpath d='M12 18.4v.2'/%3E%3C/svg%3E");
+  --ik-zahnrad:    url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='black' stroke-width='2.2' stroke-linecap='round'%3E%3Ccircle cx='12' cy='12' r='3.4'/%3E%3Cpath d='M12 2.6v3M12 18.4v3M2.6 12h3M18.4 12h3M5.3 5.3l2.2 2.2M16.5 16.5l2.2 2.2M18.7 5.3l-2.2 2.2M7.5 16.5l-2.2 2.2'/%3E%3C/svg%3E");
+  --ik-uhr:        url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='black' stroke-width='2.2' stroke-linecap='round' stroke-linejoin='round'%3E%3Ccircle cx='12' cy='12' r='8.6'/%3E%3Cpath d='M12 7v5l3.4 2'/%3E%3C/svg%3E");
+  --ik-kurve:      url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='black' stroke-width='2.2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M4 19.5h16'/%3E%3Cpath d='M5.5 16l4.2-5.2 3 3 5.4-7'/%3E%3C/svg%3E");
+  --ik-buch:       url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='black' stroke-width='2.2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M5 4.5h12.5a1 1 0 0 1 1 1V20H7.2A2.2 2.2 0 0 1 5 17.8z'/%3E%3Cpath d='M5 17.8a2.2 2.2 0 0 1 2.2-2.2h11.3'/%3E%3C/svg%3E");
+  --ik-schloss:    url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='black' stroke-width='2.2' stroke-linecap='round' stroke-linejoin='round'%3E%3Crect x='5.5' y='11' width='13' height='9' rx='1.6'/%3E%3Cpath d='M8.5 11V8a3.5 3.5 0 0 1 7 0v3'/%3E%3C/svg%3E");
+}
+
+/* Der Traeger: jeder Knopf wird eine Zeile mit Zeichen + Text. */
+.tor{ display:inline-flex; align-items:center; gap:9px; --ik:var(--ik-pfeil); }
+.tor::before{
+  content:''; width:15px; height:15px; flex:0 0 15px;
+  background:currentColor;
+  -webkit-mask:var(--ik) center / contain no-repeat;
+  mask:var(--ik) center / contain no-repeat;
+  transition:transform .25s ease;
+}
+.tor:hover::before{ transform:translateX(3px); }
+
+/* Die Zuordnung: das Ziel bestimmt das Zeichen. */
+.tor[href*="zugang"]{    --ik:var(--ik-schluessel); }
+.tor[href*="preise"]{    --ik:var(--ik-liste); }
+.tor[href*="support"]{   --ik:var(--ik-funk); }
+.tor[href*="faq"]{       --ik:var(--ik-frage); }
+.tor[href*="technik"]{   --ik:var(--ik-zahnrad); }
+.tor[href*="werdegang"]{ --ik:var(--ik-uhr); }
+.tor[href*="gemessen"]{  --ik:var(--ik-kurve); }
+.tor[href*="recht/"], .tor[href*="start.html"],
+.tor[href*="angaben"], .tor[href*="regelwerk"]{ --ik:var(--ik-buch); }
+
+/* Knoepfe mit Programmzeichen behalten ihr Logo, kein zweites Zeichen. */
+.tor.mitzeichen::before{ display:none; }
+
+/* Abgeschaltet traegt das Schloss, und es bewegt sich nicht. */
+.tor[disabled], button.tor[disabled]{ --ik:var(--ik-schloss); }
+.tor[disabled]::before{ display:inline-block; transition:none; }
+.tor[disabled]:hover::before{ transform:none; }
+
+/* Die Tafel-Knoepfe (Freischalten, Bestellvorschau) sprechen dieselbe Sprache. */
+.tafel button{ display:inline-flex; align-items:center; justify-content:center; gap:9px; }
+.tafel button::before{
+  content:''; width:15px; height:15px; flex:0 0 15px; background:currentColor;
+  -webkit-mask:var(--ik-schluessel) center / contain no-repeat;
+  mask:var(--ik-schluessel) center / contain no-repeat;
+}
+.tafel button[disabled]::before{
+  -webkit-mask-image:var(--ik-schloss); mask-image:var(--ik-schloss);
+}
+
+@media (prefers-reduced-motion: reduce){
+  .tor::before{ transition:none; }
+  .tor:hover::before{ transform:none; }
+}
