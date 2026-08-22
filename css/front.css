@@ -185,7 +185,10 @@ p{ max-width:74ch; }
   color:var(--sonar); font-family:'Share Tech Mono', ui-monospace, monospace;
   font-size:12px; display:flex; align-items:center; justify-content:center;
 }
-.kette b{ display:block; font-size:17px; letter-spacing:.02em; }
+/* Nur die UEBERSCHRIFT der Stufe steht auf eigener Zeile. Fettes im
+ * Fließtext darunter muss im Satz bleiben, sonst zerreisst es den Satz. */
+.kette > li > b{ display:block; font-size:17px; letter-spacing:.02em; }
+.kette span b{ display:inline; font-size:inherit; }
 .kette span{ display:block; color:var(--text-leise); font-size:15.5px; max-width:74ch; }
 
 /* ---------------------------------------------------------------- KLARTEXT -- */

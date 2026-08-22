@@ -15,7 +15,11 @@ recht/agb.html
 recht/widerruf.html   Belehrung plus Muster-Formular
 recht/risiko.html     kein Gluecksspiel, keine Anlageberatung, was schiefgehen kann
 recht/cookies.html    es gibt keine Cookies, nur lokaler Speicher
-css/front.css         DESIGN-SCHICHT, loeschbar. Ohne sie bleibt alles lesbar.
+support.html          Leitstelle: Wege, was in eine Meldung gehoert, Sperrungen
+faq.html              15 haeufige Fragen, auch die unbequemen Antworten
+css/front.css         DESIGN-SCHICHT 1, loeschbar. Ohne sie bleibt alles lesbar.
+css/buehne.css        DESIGN-SCHICHT 2, loeschbar: Sterne, Raster, Planeten, Radar
+js/buehne.js          Schalter fuer die Bewegungsstufe. Ohne ihn bleibt Stufe 2.
 js/tor.js             LOGIK der Sperre. Eine Tauschstelle fuer den Serverbetrieb.
 schrift/              Rajdhani und Share Tech Mono, selbst gehostet
 bilder/               Bildschirmfotos vom 22.08.2026, aus dem laufenden Betrieb
@@ -23,12 +27,27 @@ bilder/               Bildschirmfotos vom 22.08.2026, aus dem laufenden Betrieb
 
 ## Die Schichten, getrennt gehalten
 
-* **Design**: `css/front.css`. Wer die Datei loescht, hat nackte, aber
+* **Design 1**: `css/front.css`. Wer die Datei loescht, hat nackte, aber
   vollstaendig lesbare Seiten. Kein Text, kein Link und keine Sperre haengt
-  daran. Keine Animation ausser Hover.
+  daran.
+* **Design 2**: `css/buehne.css` plus der Block `<div class="buehne">` in den
+  Seiten. Sternenfeld, Taktikraster, drei Gasriesen mit Orbits, drehender
+  Radarkegel, HUD-Eckwinkel. Bewegt werden ausschliesslich `transform` und
+  `opacity`, kein WebGL, kein Bild, keine Schleife, Taktzeiten 46 bis 120 s.
+  Drei Stufen ueber `data-anim` am `<html>`: 1 Ruhe, 2 Normal (Voreinstellung),
+  3 Voll. Wer im System Bewegung reduziert hat, bekommt Ruhe ohne Klick.
+  Auf schmalen Geraeten fallen Radar und zwei Koerper von selbst weg.
 * **Logik**: `js/tor.js`. Nur die Sperre, sonst nichts. Keine Datenabfrage,
   kein Supabase, keine Bridge.
 * **Inhalt**: die HTML-Dateien selbst.
+
+## Die Zeichen
+
+Drei Stueck, eine Familie: der fuenfzackige Stern im Fadenkreuz gehoert dem
+Panel Pro, das Delta im Taktik-Rahmen dem Protection Panel, und die drei
+Guertelsterne des Orion dem Dach darueber. Das eigene Zeichen ist bewusst
+VIERZACKIG, damit es den Stern des Panels nicht nachaefft. Ueberall, wo ein Weg
+zu einem der Programme fuehrt, steht sein Zeichen daneben.
 
 ## Die Bilder
 
