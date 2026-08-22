@@ -1,0 +1,198 @@
+/* ============================================================================
+ * TIEFE.CSS, die dritte Design-Schicht: Scrollbewegung und 3D-Klappen.
+ * ============================================================================
+ *
+ * Angelegt 23.08.2026. LOESCHBAR wie die zwei anderen. Wer diese Datei und
+ * js/tiefe.js entfernt, hat alle Inhalte weiterhin vollstaendig auf dem
+ * Bildschirm, nur ohne Bewegung und ohne Faltung.
+ *
+ * DIE WICHTIGSTE REGEL DIESER DATEI:
+ * Ein Element wird NIE vom Stylesheet allein unsichtbar gemacht. Das
+ * Versteck haengt an der Klasse `js-tiefe`, die ausschliesslich
+ * js/tiefe.js an das <html> schreibt. Faellt das Skript aus, wird die Klasse
+ * nie gesetzt, und alles steht sofort da. Ein Text, den man ohne JavaScript
+ * nicht mehr lesen kann, waere kein Effekt, sondern ein Fehler.
+ *
+ * Das Aufklappen selbst braucht ueberhaupt kein Skript: es sind <details>
+ * und <summary>, die der Browser von sich aus oeffnet und schliesst. Das
+ * Stylesheet legt nur die Drehung darueber.
+ *
+ * STUFEN, wie in buehne.css:
+ *   1 = Ruhe: kein Auftauchen, keine Drehung, alles sofort und flach da.
+ *   2 = Normal: Auftauchen beim Scrollen, Klappen drehen sich auf.
+ *   3 = Voll: zusaetzlich Randleiste als Fortschritt und Tiefenversatz.
+ */
+
+/* --------------------------------------------------------- AUFTAUCHEN ------ */
+
+html.js-tiefe .steigt{
+  opacity:0;
+  transform:translate3d(0, 22px, 0);
+  transition:opacity .62s cubic-bezier(.22,.61,.36,1),
+             transform .62s cubic-bezier(.22,.61,.36,1);
+  will-change:opacity, transform;
+}
+html.js-tiefe .steigt.da{
+  opacity:1;
+  transform:translate3d(0,0,0);
+}
+/* Gestaffelt, damit eine Reihe von Karten nicht wie ein Block umklappt.
+ * Vier Stufen reichen, danach wiederholt es sich unauffaellig. */
+html.js-tiefe .steigt.v1{ transition-delay:.06s; }
+html.js-tiefe .steigt.v2{ transition-delay:.12s; }
+html.js-tiefe .steigt.v3{ transition-delay:.18s; }
+
+/* Stufe 1: kein Versteck, keine Verzoegerung, nichts. */
+html[data-anim="1"].js-tiefe .steigt{
+  opacity:1 !important; transform:none !important;
+  transition:none !important; transition-delay:0s !important;
+}
+
+@media (prefers-reduced-motion: reduce){
+  html.js-tiefe .steigt{
+    opacity:1 !important; transform:none !important;
+    transition:none !important; transition-delay:0s !important;
+  }
+}
+
+/* ------------------------------------------------------- RANDLEISTE -------- */
+/* Der Fortschritt am oberen Rand. Reines CSS ueber die Scroll-Zeitachse, ohne
+ * eine einzige Zeile JavaScript und ohne Ereignis bei jedem Bildlauf. Wo der
+ * Browser das nicht kennt, gibt es die Leiste einfach nicht. */
+
+@supports (animation-timeline: scroll()){
+  html[data-anim="3"] body::before{
+    content:''; position:fixed; top:0; left:0; height:2px; width:100%;
+    transform-origin:0 50%; z-index:99;
+    background:linear-gradient(90deg, var(--sonar), var(--gruen));
+    animation:fortschritt linear both;
+    animation-timeline:scroll();
+  }
+  @keyframes fortschritt{ from{ transform:scaleX(0); } to{ transform:scaleX(1); } }
+
+  /* Die Planeten wandern mit dem Bildlauf, langsamer als die Seite. Auch das
+   * laeuft ueber die Scroll-Zeitachse, nicht ueber ein Ereignis. */
+  html[data-anim="3"] .planet-1{ animation:tiefenzug linear both; animation-timeline:scroll(); }
+  html[data-anim="3"] .planet-3{ animation:tiefenzug-klein linear both; animation-timeline:scroll(); }
+  @keyframes tiefenzug{ from{ transform:translate3d(0,0,0); } to{ transform:translate3d(0,-170px,0); } }
+  @keyframes tiefenzug-klein{ from{ transform:translate3d(0,40px,0); } to{ transform:translate3d(0,-90px,0); } }
+}
+
+/* --------------------------------------------------------- 3D-KLAPPEN ------ */
+/* <details> und <summary>, mit einer Drehung um die obere Kante. Der Browser
+ * oeffnet und schliesst; das Stylesheet dreht nur. Ohne CSS bleibt eine ganz
+ * normale Aufklappliste uebrig, ohne JavaScript ebenso. */
+
+.klappen{ display:grid; gap:12px; margin-top:24px; }
+.klappen.zwei{ grid-template-columns:1fr 1fr; }
+
+.klappe{
+  border:1px solid var(--rand); border-radius:5px;
+  background:rgba(14,27,42,.82);
+  perspective:1100px;
+}
+.klappe > summary{
+  cursor:pointer; list-style:none; padding:16px 20px;
+  display:flex; align-items:center; gap:13px;
+  font-size:17.5px; letter-spacing:.01em; font-weight:600;
+}
+.klappe > summary::-webkit-details-marker{ display:none; }
+.klappe > summary:hover{ color:var(--gold); }
+.klappe > summary:focus-visible{ outline:2px solid var(--sonar); outline-offset:2px; }
+
+/* Die Kennung links, im Ton der Felder auf der Startseite. */
+.klappe .kennung{
+  font-family:'Share Tech Mono', ui-monospace, monospace; font-size:10.5px;
+  letter-spacing:.16em; color:var(--tuerkis); flex:0 0 auto;
+}
+/* Der Winkel rechts, dreht sich beim Oeffnen. */
+.klappe .winkel{
+  margin-left:auto; width:11px; height:11px; flex:0 0 11px;
+  border-right:2px solid var(--sonar); border-bottom:2px solid var(--sonar);
+  transform:rotate(45deg); transition:transform .32s ease;
+}
+.klappe[open] > summary .winkel{ transform:rotate(225deg); }
+
+.klappe .inhalt{
+  padding:0 20px 18px; transform-origin:top center;
+  border-top:1px solid rgba(30,54,80,.7); margin-top:2px; padding-top:16px;
+}
+.klappe .inhalt p{ margin:0 0 10px; color:var(--text-leise); }
+.klappe .inhalt p:last-child{ margin-bottom:0; }
+.klappe .inhalt b{ color:var(--text); }
+
+/* Die eigentliche Faltung. Nur transform und opacity, also Grafikkarte. */
+.klappe[open] .inhalt{ animation:aufklappen .46s cubic-bezier(.2,.7,.3,1); }
+@keyframes aufklappen{
+  from{ transform:rotateX(-82deg); opacity:0; }
+  to  { transform:rotateX(0deg);   opacity:1; }
+}
+/* Stufe 1 und Systemruhe: aufklappen ja, drehen nein. */
+html[data-anim="1"] .klappe[open] .inhalt,
+html[data-anim="1"] .klappe .winkel{ animation:none !important; transition:none !important; }
+@media (prefers-reduced-motion: reduce){
+  .klappe[open] .inhalt{ animation:none !important; }
+  .klappe .winkel{ transition:none !important; }
+}
+
+/* ------------------------------------------------------- TIEFENKARTEN ------ */
+/* Die Karten des Kartenraums: sie stehen leicht im Raum und richten sich beim
+ * Zeigen auf. Ein einziger transform-Wechsel, kein Skript, kein Schatten-
+ * Neuzeichnen waehrend der Bewegung. */
+
+.kartenraum{ display:grid; grid-template-columns:repeat(3,1fr); gap:16px; margin-top:26px; }
+.kartenraum a{
+  display:block; text-decoration:none; color:inherit;
+  border:1px solid var(--rand); border-radius:6px;
+  background:linear-gradient(160deg, rgba(20,36,58,.9), rgba(12,24,38,.9));
+  padding:22px 22px 20px;
+  transform:perspective(900px) rotateX(3.2deg);
+  transition:transform .34s cubic-bezier(.2,.7,.3,1), border-color .34s ease;
+  will-change:transform;
+}
+.kartenraum a:hover, .kartenraum a:focus-visible{
+  transform:perspective(900px) rotateX(0deg) translate3d(0,-5px,0);
+  border-color:var(--sonar);
+}
+.kartenraum .nummer{
+  font-family:'Share Tech Mono', ui-monospace, monospace; font-size:11px;
+  letter-spacing:.2em; color:var(--tuerkis); display:block; margin-bottom:12px;
+}
+.kartenraum h3{ margin:0 0 8px; font-size:19px; }
+.kartenraum p{ margin:0; color:var(--text-leise); font-size:15.5px; }
+.kartenraum .pfeil{
+  display:inline-block; margin-top:14px; color:var(--sonar);
+  font-family:'Share Tech Mono', ui-monospace, monospace; font-size:12px;
+  letter-spacing:.14em; text-transform:uppercase;
+}
+html[data-anim="1"] .kartenraum a{ transform:none; transition:none; }
+@media (prefers-reduced-motion: reduce){
+  .kartenraum a{ transform:none !important; transition:none !important; }
+}
+
+/* ---------------------------------------------------------- ZEITSTRAHL ----- */
+
+.strahl{ list-style:none; padding:0; margin:26px 0 0; }
+.strahl li{
+  position:relative; padding:0 0 26px 34px;
+  border-left:1px solid var(--rand); margin-left:8px;
+}
+.strahl li:last-child{ border-left-color:transparent; padding-bottom:0; }
+.strahl li::before{
+  content:''; position:absolute; left:-6px; top:6px;
+  width:11px; height:11px; border-radius:50%;
+  background:var(--karte-2); border:2px solid var(--sonar);
+}
+.strahl li.wende::before{ background:var(--gold); border-color:var(--gold); }
+.strahl .tag{
+  font-family:'Share Tech Mono', ui-monospace, monospace; font-size:11.5px;
+  letter-spacing:.16em; color:var(--tuerkis); display:block;
+}
+.strahl h3{ margin:2px 0 5px; font-size:17.5px; }
+.strahl p{ margin:0; color:var(--text-leise); font-size:15.5px; }
+
+/* ------------------------------------------------------------- SCHMAL ------ */
+
+@media (max-width: 900px){
+  .kartenraum, .klappen.zwei{ grid-template-columns:1fr; }
+}

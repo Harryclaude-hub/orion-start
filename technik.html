@@ -1,0 +1,308 @@
+<!doctype html>
+<html lang="de">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Maschinenraum</title>
+<meta name="robots" content="noindex, nofollow">
+<link rel="icon" type="image/svg+xml" href="bilder/logo-orion.svg">
+<link rel="stylesheet" href="schrift/schrift.css?v=1">
+<link rel="stylesheet" href="css/front.css?v=3">
+<link rel="stylesheet" href="css/buehne.css?v=3">
+<link rel="stylesheet" href="css/tiefe.css?v=3">
+<script src="js/buehne.js?v=3"></script>
+
+<!-- =============================================================================
+     TECHNIK.HTML, der Maschinenraum. Angelegt 23.08.2026.
+
+     Diese Seite haengt an keinem Scrollweg der Startseite. Man erreicht sie
+     nur ueber den Kartenraum oder die Navigation. Sie erklaert, WIE die
+     Programme arbeiten, eine Ebene tiefer als die Frontpage, aber ohne ein
+     einziges Betriebsgeheimnis: kein Schluessel, kein Endpunkt, keine
+     Tabellennamen. Was hier steht, steht so oder aehnlich auch in den
+     oeffentlichen Erklaerseiten der Programme selbst.
+
+     Die Klappen sind <details>/<summary>: Aufklappen funktioniert ohne
+     JavaScript, die 3D-Faltung ist nur die Zutat obendrauf.
+     ========================================================================== -->
+</head>
+<body>
+
+<div class="buehne" aria-hidden="true">
+  <div class="sterne"></div>
+  <div class="raster-buehne"></div>
+  <div class="orbit orbit-1"></div>
+  <div class="orbit orbit-2"></div>
+  <div class="planet planet-1"></div>
+  <div class="planet planet-2"></div>
+  <div class="planet planet-3"></div>
+  <div class="radar"></div>
+</div>
+
+<div class="leiste">
+  <div class="hof">
+    <a class="name" href="index.html">Orion</a>
+    <nav>
+      <a href="index.html#panel">Panel Pro</a>
+      <a href="index.html#protection">Protection</a>
+      <a href="werdegang.html">Werdegang</a>
+      <a href="preise.html">Preise</a>
+      <a href="zugang.html">Zugang</a>
+    </nav>
+  </div>
+</div>
+
+<header class="kopf">
+  <div class="hof">
+    <span class="plakette"><span class="lampe"></span> Eine Ebene tiefer</span>
+    <h1 style="font-size:32px;text-transform:uppercase;letter-spacing:.05em;margin:0 0 10px">Maschinenraum</h1>
+    <p class="aufschlag">Wie die Programme arbeiten, Klappe f&uuml;r Klappe.
+      <b>Kein Betriebsgeheimnis</b>, aber auch keine Werbefolie: was hier steht,
+      ist so gebaut und so gemessen.</p>
+  </div>
+</header>
+
+<main>
+
+  <!-- ============================================================ DIE SUCHE -->
+  <section class="steigt">
+    <div class="hof">
+      <h2>Die Suche</h2>
+      <p class="satz">Vom Rohmarkt zur gepr&uuml;ften Karte.</p>
+
+      <div class="klappen">
+
+        <details class="klappe">
+          <summary><span class="kennung">MR_01</span> Warum das Paaren der schwere Teil ist <span class="winkel"></span></summary>
+          <div class="inhalt">
+            <p>Zwei B&ouml;rsen beschreiben dasselbe Spiel mit verschiedenen
+              Namen, verschiedenen Liga-Kennungen und verschiedenen Zeitfeldern.
+              Mal ist die Zeit der Anpfiff, mal eine Abrechnungsfrist Tage
+              sp&auml;ter, mal das Turnierende.</p>
+            <p>Deshalb nimmt jede Paarung <b>sieben H&uuml;rden</b>, bevor
+              gerechnet wird: Sportart, Mannschaftsklasse, Liga-Kennung,
+              Zeitpflicht, Name symmetrisch, Name beidseitig,
+              Trennsch&auml;rfe. Eine fehlende Zeit l&auml;sst nicht mehr durch:
+              <b>ungemessen z&auml;hlt als nicht belegt.</b></p>
+            <p>Und alle sieben H&uuml;rden stehen an <b>einer einzigen Stelle im
+              Code</b>. Zwei Wege mit zwei Ma&szlig;st&auml;ben w&auml;ren genau
+              die Drift, die hier schon Geld gekostet hat.</p>
+          </div>
+        </details>
+
+        <details class="klappe">
+          <summary><span class="kennung">MR_02</span> Die Rechnung, auf der alles steht <span class="winkel"></span></summary>
+          <div class="inhalt">
+            <p>Jedes Buch nimmt Geb&uuml;hren, und jedes anders. Deshalb wird
+              nie mit der nackten Quote gerechnet, sondern mit der
+              <b>Effektivquote nach den echten Geb&uuml;hren des jeweiligen
+              Buchs</b>.</p>
+            <p>Dann die Kehrwertsumme: eins durch Quote A plus eins durch
+              Quote B. <b>Liegt die Summe unter eins, ist ein Vorteil da</b>,
+              und der Einsatz wird so aufgeteilt, dass beide Ausg&auml;nge
+              dasselbe auszahlen. Jede Karte rechnet das auf 1.000 vor, damit
+              man es nachrechnen kann, ohne zu glauben.</p>
+            <p>Browser und Server f&uuml;hren <b>dieselbe Rechnung</b>, und ein
+              Pr&uuml;flauf beweist vor jedem Ausrollen, dass beide Fassungen
+              auf die vierte Nachkommastelle gleich bleiben.</p>
+          </div>
+        </details>
+
+        <details class="klappe">
+          <summary><span class="kennung">MR_03</span> Die Wache, die niemandem glaubt <span class="winkel"></span></summary>
+          <div class="inhalt">
+            <p>Eine zweite Stufe pr&uuml;ft jede gespeicherte Zeile <b>jede
+              Minute neu</b>, und zwar aus der Zeile selbst heraus, ohne der
+              ersten Stufe zu glauben. Eine Stufe, die der anderen glaubt, ist
+              keine zweite Stufe, sondern eine Wiederholung.</p>
+            <p>Auch eine beim Paaren saubere Zeile kann inzwischen faul sein:
+              der Anpfiff ist vorbei, die Kurse sind weitergelaufen, das Buch
+              hat den Markt geschlossen. Was durchf&auml;llt, wandert mit
+              Begr&uuml;ndung in den Verlauf, <b>nichts verschwindet
+              wortlos</b>.</p>
+          </div>
+        </details>
+
+        <details class="klappe">
+          <summary><span class="kennung">MR_04</span> Warum gemeldet wird, und wann nicht <span class="winkel"></span></summary>
+          <div class="inhalt">
+            <p>Eine Meldung geht erst raus, wenn drei Dinge gleichzeitig gelten:
+              das Urteil der Wache ist <b>leer</b>, die Kurssumme liegt
+              <b>unter eins</b>, und der Fund hat eine
+              <b>Bew&auml;hrungszeit</b> &uuml;berstanden. Die
+              Bew&auml;hrungszeit gibt es, weil ein Kurs, der nur Sekunden
+              lebt, keine Meldung wert ist.</p>
+            <p>Der Grundsatz dahinter, nach zwei gemessenen Fehlalarmen:
+              <b>lieber eine Meldung weniger als eine falsche.</b></p>
+          </div>
+        </details>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ========================================================== DIE PRUEFUNG -->
+  <section class="steigt">
+    <div class="hof">
+      <h2>Die Pr&uuml;fung</h2>
+      <p class="satz">Was das zweite Programm anders macht als das erste.</p>
+
+      <div class="klappen">
+
+        <details class="klappe">
+          <summary><span class="kennung">MR_05</span> Getrennt gebaut, mit Absicht <span class="winkel"></span></summary>
+          <div class="inhalt">
+            <p>Der Pr&uuml;fer teilt mit dem Panel <b>keinen Code, keine
+              Datenbank und keinen Takt</b>. Er bekommt nur das, was jeder
+              bekommt: den kopierten Bericht. Dann zerlegt er ihn und rechnet
+              jede Zeile mit einer <b>eigenen Zweitfassung</b> der Formeln
+              nach.</p>
+            <p>Das ist der Punkt der Trennung: wenn beide Fassungen dieselbe
+              Zahl zeigen, best&auml;tigen sich zwei unabh&auml;ngige Wege.
+              Wenn das Panel sich selbst best&auml;tigen w&uuml;rde,
+              best&auml;tigte sich gar nichts.</p>
+          </div>
+        </details>
+
+        <details class="klappe">
+          <summary><span class="kennung">MR_06</span> Selbst geholt statt geglaubt <span class="winkel"></span></summary>
+          <div class="inhalt">
+            <p>Der Pr&uuml;fer &uuml;bernimmt Angaben nicht einfach aus dem
+              Bericht. Was sich von au&szlig;en pr&uuml;fen l&auml;sst, holt er
+              <b>selbst beim Anbieter</b>: Geb&uuml;hrensatz, handelbare Menge,
+              Marktfrage hinter dem Link, Anpfiffzeit.</p>
+            <p>Eine Herkunftstabelle sagt zu jeder Angabe, woher sie stammt:
+              <b>aus dem Bericht, beim Anbieter nachgefragt oder selbst
+              gerechnet.</b> Ein falscher Geb&uuml;hrensatz ist ein harter
+              Befund, keine Fu&szlig;note.</p>
+            <p>Und wo eine B&ouml;rse von au&szlig;en nicht pr&uuml;fbar ist,
+              steht ehrlich <b>nicht pr&uuml;fbar</b>, nicht gr&uuml;n.</p>
+          </div>
+        </details>
+
+        <details class="klappe">
+          <summary><span class="kennung">MR_07</span> Zwei Ampeln, zwei Fragen <span class="winkel"></span></summary>
+          <div class="inhalt">
+            <p>Ob die Rechnung stimmt und ob am Ende Geld &uuml;brig bleibt,
+              sind <b>zwei verschiedene Fragen</b>, und sie bekommen zwei
+              getrennte Antworten. Der gef&auml;hrlichste Fall ist n&auml;mlich
+              der unauff&auml;lligste: <b>richtig gerechnet, aber kein
+              Gewinn.</b> Der verschwand fr&uuml;her hinter einem gr&uuml;nen
+              Haken.</p>
+            <p>Die Ein-Prozent-Grenze f&uuml;r Orange ist nicht geraten,
+              sondern aus der Messung vom 13.08. begr&uuml;ndet: richtige Funde
+              lagen zwischen 2,07 und 3,27 Prozent.</p>
+          </div>
+        </details>
+
+        <details class="klappe">
+          <summary><span class="kennung">MR_08</span> Der H&auml;rtetest <span class="winkel"></span></summary>
+          <div class="inhalt">
+            <p>Der Pr&uuml;fer wird selbst gepr&uuml;ft: <b>306 Selbsttests</b>
+              m&uuml;ssen vor jedem Ausrollen gr&uuml;n sein, und ein
+              H&auml;rtetest verf&auml;lscht Berichte gezielt an dreizehn
+              Stellen. Stand 22.08.2026: <b>13 von 13 erkannt, 0
+              Fehlalarme</b> bei korrekten Berichten.</p>
+            <p>Die gemessenen Grenzen stehen dazu: Halbzeit gegen Ganzspiel und
+              ein durchgehend stimmig erfundener Kurs sind aus dem Text allein
+              nicht widerlegbar. Dagegen helfen der Abruf beim Anbieter, die
+              Linkpr&uuml;fung und das Renditeband.</p>
+          </div>
+        </details>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- =========================================================== DIE REGELN -->
+  <section class="steigt">
+    <div class="hof">
+      <h2>Die Bauregeln</h2>
+      <p class="satz">Drei Grunds&auml;tze, die &uuml;ber allem stehen.</p>
+
+      <div class="klappen zwei">
+
+        <details class="klappe">
+          <summary><span class="kennung">MR_09</span> Erst messen, dann bauen <span class="winkel"></span></summary>
+          <div class="inhalt">
+            <p>Nichts wird gebaut, weil es gut klingt. Vor jedem Ausrollen
+              l&auml;uft ein Trockenlauf gegen echte Daten, und was ungemessen
+              ist, wird <b>als ungemessen gekennzeichnet</b>, auf der Karte,
+              nicht im Kleingedruckten.</p>
+          </div>
+        </details>
+
+        <details class="klappe">
+          <summary><span class="kennung">MR_10</span> Stille Ausf&auml;lle sind verboten <span class="winkel"></span></summary>
+          <div class="inhalt">
+            <p>Ein Bereich ohne Daten meldet das, statt gr&uuml;n zu leuchten.
+              Ein Buch, dessen Kurse nur von einem Heimrechner kommen, zeigt
+              <b>null neue Paare</b>, wenn der Rechner steht, statt mit alten
+              Kursen zu rechnen. Ein stiller Ausfall ist schlimmer als ein
+              lauter.</p>
+          </div>
+        </details>
+
+        <details class="klappe">
+          <summary><span class="kennung">MR_11</span> Design ist eine eigene Schicht <span class="winkel"></span></summary>
+          <div class="inhalt">
+            <p>Alles, was nur sch&ouml;n ist, liegt in l&ouml;schbaren Dateien:
+              wer sie entfernt, verliert <b>keinen Wert, keine Rechnung, keinen
+              Text</b>. Auch diese Seite h&auml;lt das ein: die Klappen hier
+              &ouml;ffnen ohne JavaScript, das Auftauchen beim Scrollen deckt
+              sich selbst auf, wenn das Skript ausf&auml;llt.</p>
+          </div>
+        </details>
+
+        <details class="klappe">
+          <summary><span class="kennung">MR_12</span> Bewegung kostet, also ist sie schaltbar <span class="winkel"></span></summary>
+          <div class="inhalt">
+            <p>Jede Animation auf dieser Plattform l&auml;uft &uuml;ber
+              <b>transform und opacity</b>, also &uuml;ber die Grafikkarte.
+              Kein WebGL, keine Schleife, keine Fl&auml;che, die bei jedem Bild
+              neu gezeichnet wird. Und unten in der Fu&szlig;zeile steht auf
+              jeder Seite der Schalter: <b>Stufe 1 stellt alles still.</b></p>
+          </div>
+        </details>
+
+      </div>
+
+      <div class="zugang">
+        <a class="tor leise" href="werdegang.html">Der Werdegang</a>
+        <a class="tor" href="index.html#gemessen">Zur&uuml;ck zu den Messwerten</a>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<footer class="fuss">
+  <div class="hof">
+    <div class="reihen">
+      <div class="spalte">
+        <h4>Programme</h4>
+        <a href="index.html#panel">Orion Panel Pro</a>
+        <a href="index.html#protection">Orion Protection Panel</a>
+        <a href="zugang.html">Zugang</a>
+        <a href="preise.html">Preise</a>
+      </div>
+      <div class="spalte">
+        <h4>Weiter</h4>
+        <a href="werdegang.html">Werdegang</a>
+        <a href="support.html">Support</a>
+        <a href="faq.html">H&auml;ufige Fragen</a>
+      </div>
+      <div class="spalte">
+        <h4>Rechtliches</h4>
+        <a href="recht/impressum.html">Impressum</a>
+        <a href="recht/datenschutz.html">Datenschutz</a>
+        <a href="recht/agb.html">AGB</a>
+      </div>
+    </div>
+    <div id="stufenschalter"></div>
+  </div>
+</footer>
+
+<script src="js/tiefe.js?v=3"></script>
+</body>
+</html>

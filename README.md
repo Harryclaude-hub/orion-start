@@ -18,8 +18,12 @@ recht/cookies.html    es gibt keine Cookies, nur lokaler Speicher
 support.html          Leitstelle: Wege, was in eine Meldung gehoert, Sperrungen
 faq.html              15 haeufige Fragen, auch die unbequemen Antworten
 css/front.css         DESIGN-SCHICHT 1, loeschbar. Ohne sie bleibt alles lesbar.
+technik.html          Maschinenraum: 12 Klappen, wie die Programme arbeiten
+werdegang.html        der Weg seit 09.08. als Zeitstrahl, mit den Fehlern drin
 css/buehne.css        DESIGN-SCHICHT 2, loeschbar: Sterne, Raster, Planeten, Radar
+css/tiefe.css         DESIGN-SCHICHT 3, loeschbar: Scroll-Auftauchen, 3D-Klappen
 js/buehne.js          Schalter fuer die Bewegungsstufe. Ohne ihn bleibt Stufe 2.
+js/tiefe.js           das Auftauchen beim Scrollen; faellt es aus, steht alles da
 js/tor.js             LOGIK der Sperre. Eine Tauschstelle fuer den Serverbetrieb.
 schrift/              Rajdhani und Share Tech Mono, selbst gehostet
 bilder/               Bildschirmfotos vom 22.08.2026, aus dem laufenden Betrieb
@@ -37,6 +41,18 @@ bilder/               Bildschirmfotos vom 22.08.2026, aus dem laufenden Betrieb
   Drei Stufen ueber `data-anim` am `<html>`: 1 Ruhe, 2 Normal (Voreinstellung),
   3 Voll. Wer im System Bewegung reduziert hat, bekommt Ruhe ohne Klick.
   Auf schmalen Geraeten fallen Radar und zwei Koerper von selbst weg.
+* **Design 3**: `css/tiefe.css` + `js/tiefe.js`. Abschnitte tauchen beim
+  Scrollen auf (ein IntersectionObserver, kein scroll-Ereignis), die Klappen
+  im Maschinenraum falten sich in 3D auf (rotateX um die Oberkante), die
+  Karten des Kartenraums stehen leicht gekippt im Raum. HARTE REGEL dieser
+  Schicht: das Versteck haengt an der Klasse js-tiefe, die NUR das Skript
+  setzt, und zwar erst wenn es aufdecken kann. Ohne JavaScript steht alles
+  sofort da; eine Wache deckt nach 2,5 s alles auf, was haengen bleibt
+  (dieselbe Lehre wie beim Sperr-Overlay des Panels). Die Klappen sind
+  <details>/<summary> und oeffnen ganz ohne Skript. Die Fortschrittsleiste
+  und der Tiefenzug der Planeten laufen ueber die Scroll-Zeitachse
+  (animation-timeline: scroll()), nur auf Stufe 3 und nur wo der Browser sie
+  kennt. Stufe 1 und prefers-reduced-motion stellen auch diese Schicht still.
 * **Logik**: `js/tor.js`. Nur die Sperre, sonst nichts. Keine Datenabfrage,
   kein Supabase, keine Bridge.
 * **Inhalt**: die HTML-Dateien selbst.

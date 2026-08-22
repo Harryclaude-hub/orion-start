@@ -8,9 +8,10 @@
 <meta name="robots" content="noindex, nofollow">
 <link rel="icon" type="image/svg+xml" href="bilder/logo-orion.svg">
 <link rel="stylesheet" href="schrift/schrift.css?v=1">
-<link rel="stylesheet" href="css/front.css?v=2">
-<link rel="stylesheet" href="css/buehne.css?v=2">
-<script src="js/buehne.js?v=2"></script>
+<link rel="stylesheet" href="css/front.css?v=3">
+<link rel="stylesheet" href="css/buehne.css?v=3">
+<link rel="stylesheet" href="css/tiefe.css?v=3">
+<script src="js/buehne.js?v=3"></script>
 
 <!-- =============================================================================
      INDEX.HTML, die Frontpage. Angelegt 22.08.2026.
@@ -51,6 +52,7 @@
       <a href="#protection">Protection</a>
       <a href="#zusammen">Ablauf</a>
       <a href="#gemessen">Gemessen</a>
+      <a href="technik.html">Maschinenraum</a>
       <a href="preise.html">Preise</a>
       <a href="support.html">Support</a>
       <a href="zugang.html">Zugang</a>
@@ -103,7 +105,7 @@
       <p class="satz">Das eine sucht. Das andere glaubt dem ersten kein Wort.</p>
 
       <div class="saeulen">
-        <div class="saeule sucht hud">
+        <div class="saeule sucht hud steigt">
           <span class="rolle">Programm 1 &middot; sucht</span>
           <div class="zeichen">
             <img src="bilder/logo-panel.svg" alt="Zeichen des Orion Panel Pro">
@@ -114,7 +116,7 @@
             den Fund samt vollem Rechenweg ab und meldet ihn. Gesucht wird auf
             einem Server, nicht im Browser.</p>
         </div>
-        <div class="saeule prueft hud">
+        <div class="saeule prueft hud steigt v1">
           <span class="rolle">Programm 2 &middot; pr&uuml;ft</span>
           <div class="zeichen">
             <img src="bilder/logo-protection.svg" alt="Zeichen des Orion Protection Panel">
@@ -148,7 +150,7 @@
         Abrechnungsfrist Tage sp&auml;ter. Jede Paarung muss deshalb
         <b>sieben H&uuml;rden</b> nehmen, bevor sie gerechnet wird.</p>
 
-      <div class="spot">
+      <div class="spot steigt">
         <div class="rahmen hud">
           <div class="balken"><span class="punkt an"></span> Gefechtsstand &middot; Startbild</div>
           <img src="bilder/panel-kopf.png" alt="Startbild des Orion Panel Pro mit Bedienknoepfen und Statusanzeige" loading="lazy">
@@ -159,7 +161,7 @@
           wie alt der letzte Durchlauf ist.</p>
       </div>
 
-      <div class="spot">
+      <div class="spot steigt">
         <div class="rahmen hud">
           <div class="balken"><span class="punkt an"></span> Lage &middot; vier Bereiche</div>
           <img src="bilder/panel-lage.png" alt="Radar, Gefechtsstand-Kacheln und Sonarzaehler des Panels" loading="lazy">
@@ -170,7 +172,7 @@
           schlimmer als ein lauter.</p>
       </div>
 
-      <div class="spot">
+      <div class="spot steigt">
         <div class="rahmen hud">
           <div class="balken"><span class="punkt an"></span> Fundverlauf &middot; 24 Stunden</div>
           <img src="bilder/panel-kurve.png" alt="Fundverlauf des Panels als Balkenkurve ueber 24 Stunden" loading="lazy">
@@ -181,7 +183,7 @@
           bestanden haben und wie viele nicht.</p>
       </div>
 
-      <div class="spot">
+      <div class="spot steigt">
         <div class="rahmen hud">
           <div class="balken"><span class="punkt an"></span> Die B&uuml;cher</div>
           <img src="bilder/panel-buecher.png" alt="Tabelle der vier Boersen mit Aktualitaet, Umfang und Tempo" loading="lazy">
@@ -193,7 +195,7 @@
           Fu&szlig;note.</p>
       </div>
 
-      <div class="spot">
+      <div class="spot steigt">
         <div class="rahmen hud">
           <div class="balken"><span class="punkt an"></span> Paarungsmatrix</div>
           <img src="bilder/panel-matrix.png" alt="Matrix aller Boersenpaarungen mit bester Rendite je Feld" loading="lazy">
@@ -206,25 +208,25 @@
       </div>
 
       <div class="raster">
-        <div class="feld"><span class="kennung">ORB_01</span>
+        <div class="feld steigt"><span class="kennung">ORB_01</span>
           <p><b>Jedes Buch gegen jedes.</b> Nicht gegen ein Leitbuch. Eine
             Absicherung besteht immer aus genau zwei B&uuml;chern und genau zwei
             Ausg&auml;ngen derselben Frage.</p></div>
-        <div class="feld"><span class="kennung">ORB_02</span>
+        <div class="feld steigt v1"><span class="kennung">ORB_02</span>
           <p><b>L&auml;uft ohne offenen Browser.</b> Gesucht wird auf dem Server,
             im festen Takt, auch nachts und mit zugeklapptem Laptop.</p></div>
-        <div class="feld"><span class="kennung">ORB_03</span>
+        <div class="feld steigt v2"><span class="kennung">ORB_03</span>
           <p><b>Eine Wache, die nicht glaubt.</b> Die zweite Stufe leitet jede
             H&uuml;rde jede Minute neu aus der gespeicherten Zeile ab.</p></div>
-        <div class="feld"><span class="kennung">ORB_04</span>
+        <div class="feld steigt"><span class="kennung">ORB_04</span>
           <p><b>Jede Zahl nachrechenbar.</b> Effektivquoten nach den echten
             Geb&uuml;hren des jeweiligen Buchs, Kehrwertsumme, Aufteilung, alles
             auf 1.000 vorgerechnet.</p></div>
-        <div class="feld"><span class="kennung">ORB_05</span>
+        <div class="feld steigt v1"><span class="kennung">ORB_05</span>
           <p><b>Meldung nur nach Pr&uuml;fung.</b> Nachricht geht erst raus, wenn
             das Urteil der Wache leer ist und der Fund eine Bew&auml;hrungszeit
             &uuml;berstanden hat.</p></div>
-        <div class="feld"><span class="kennung">ORB_06</span>
+        <div class="feld steigt v2"><span class="kennung">ORB_06</span>
           <p><b>Beide W&auml;hrungen, immer.</b> Zwei B&uuml;cher f&uuml;hren
             Dollar, zwei Euro. Jeder Betrag steht in beiden, nie nur in
             einer.</p></div>
@@ -257,7 +259,7 @@
         die das Programm <b>selbst beim Anbieter holt</b>: Geb&uuml;hrensatz,
         handelbare Menge, Marktfrage hinter dem Link, Anpfiffzeit.</p>
 
-      <div class="spot">
+      <div class="spot steigt">
         <div class="rahmen hud">
           <div class="balken"><span class="punkt an"></span> Pr&uuml;fstand &middot; Startbild</div>
           <img src="bilder/prot-kopf.png" alt="Startbild des Orion Protection Panel mit Eingabefeld fuer den Bericht" loading="lazy">
@@ -268,7 +270,7 @@
           nicht durchgewinkt.</p>
       </div>
 
-      <div class="spot">
+      <div class="spot steigt">
         <div class="rahmen hud">
           <div class="balken"><span class="punkt an"></span> Rechner zum Nachrechnen</div>
           <img src="bilder/prot-rechner.png" alt="Rechner fuer Quotenformate, Marge, Erwartungswert und Dutching" loading="lazy">
@@ -279,7 +281,7 @@
           nachvollziehbar</b> und ohne Einfluss auf das Urteil.</p>
       </div>
 
-      <div class="spot">
+      <div class="spot steigt">
         <div class="rahmen hud">
           <div class="balken"><span class="punkt an"></span> Rechen-Werkstatt</div>
           <img src="bilder/prot-werk.png" alt="Rechen-Werkstatt mit frei aenderbaren Kursen, Gebuehren und Formelzeilen" loading="lazy">
@@ -291,26 +293,26 @@
       </div>
 
       <div class="raster">
-        <div class="feld"><span class="kennung">PRO_01</span>
+        <div class="feld steigt"><span class="kennung">PRO_01</span>
           <p><b>Zwei getrennte Ampeln.</b> Rechnung richtig ist nicht dasselbe wie
             Gewinn. Ein Fund kann sauber gerechnet und trotzdem nichts wert
             sein.</p></div>
-        <div class="feld"><span class="kennung">PRO_02</span>
+        <div class="feld steigt v1"><span class="kennung">PRO_02</span>
           <p><b>Geldfluss in echtem Geld.</b> Einsatz, brutto, Geb&uuml;hr in
             Euro, netto, Gewinn, je Seite getrennt und am Ende der schlechtere
             Ausgang als garantiert.</p></div>
-        <div class="feld"><span class="kennung">PRO_03</span>
+        <div class="feld steigt v2"><span class="kennung">PRO_03</span>
           <p><b>Paarungspr&uuml;fung.</b> Eigene Fassung der Sperren: Jugend,
             Reserve, Frauen, Anpfiffabstand, Liga. Zwei verschiedene Spiele
             werden als solche benannt.</p></div>
-        <div class="feld"><span class="kennung">PRO_04</span>
+        <div class="feld steigt"><span class="kennung">PRO_04</span>
           <p><b>Herkunft jeder Angabe.</b> Aus dem Bericht, beim Anbieter
             nachgefragt oder selbst gerechnet. Mit Link auf die Abfrage.</p></div>
-        <div class="feld"><span class="kennung">PRO_05</span>
+        <div class="feld steigt v1"><span class="kennung">PRO_05</span>
           <p><b>Rechenbl&auml;tter auf hellem Papier.</b> Formel oben, jedes
             Zwischenergebnis darunter, eigene Zahl gegen Panel-Zahl. Kontrast
             gemessen: 13,3 zu 1.</p></div>
-        <div class="feld"><span class="kennung">PRO_06</span>
+        <div class="feld steigt v2"><span class="kennung">PRO_06</span>
           <p><b>306 Selbsttests, H&auml;rtetest 13 von 13.</b> Absichtlich
             verf&auml;lschte Berichte, alle erkannt, null Fehlalarme bei
             korrekten Berichten.</p></div>
@@ -331,7 +333,7 @@
       <h2>Der Weg eines Fundes</h2>
       <p class="satz">Von der Quelle bis zu der Zahl, auf die man sich verl&auml;sst.</p>
 
-      <ol class="kette">
+      <ol class="kette steigt">
         <li><b>Sammeln</b>
           <span>Jede B&ouml;rse hat ihren eigenen Takt und ihre eigene
             Schnittstelle. Eine davon sperrt Rechenzentren aus und wird deshalb
@@ -375,7 +377,7 @@
 
       <div class="messraster">
 
-        <div class="messfeld breit hud">
+        <div class="messfeld breit hud steigt">
           <h3>Die Probe vom 13.08.2026</h3>
           <p class="quelle">15 Verlaufszeilen einzeln nachgerechnet &middot; 7 richtig, 8 falsch</p>
           <svg viewBox="0 0 660 190" role="img"
@@ -405,7 +407,7 @@
             Geschenk, sondern ein Verdacht.</p>
         </div>
 
-        <div class="messfeld hud">
+        <div class="messfeld hud steigt">
           <h3>Die Ein-Buch-Probe</h3>
           <p class="quelle">Seattle-Partie &middot; 13 Paarungen</p>
           <svg viewBox="0 0 400 170" role="img"
@@ -430,7 +432,7 @@
             war damit ein einzelner veralteter Kurs &uuml;berf&uuml;hrt.</p>
         </div>
 
-        <div class="messfeld hud">
+        <div class="messfeld hud steigt">
           <h3>Was die Rundung frisst</h3>
           <p class="quelle">100 Euro Einsatz, auf ganze Euro gerundet</p>
           <svg viewBox="0 0 400 170" role="img"
@@ -452,7 +454,7 @@
             nicht sch&ouml;n.</p>
         </div>
 
-        <div class="messfeld breit hud">
+        <div class="messfeld breit hud steigt">
           <h3>Der H&auml;rtetest</h3>
           <p class="quelle">Absichtlich verf&auml;lschte Berichte &middot; Stand 22.08.2026</p>
           <svg viewBox="0 0 660 96" role="img"
@@ -509,6 +511,42 @@
     </div>
   </section>
 
+  <!-- ============================================================ KARTENRAUM
+       Wege zu den Seiten, die an keinem Scrollweg haengen. Die Karten stehen
+       leicht gekippt im Raum (tiefe.css) und richten sich beim Zeigen auf.
+       ==================================================================== -->
+  <section id="weiter">
+    <div class="hof">
+      <span class="plakette"><span class="lampe"></span> Nicht auf dem Scrollweg</span>
+      <h2>Tiefer hinein</h2>
+      <p class="satz">Drei Seiten, die man nur &uuml;ber diese Karten erreicht.</p>
+
+      <div class="kartenraum">
+        <a href="technik.html" class="steigt">
+          <span class="nummer">SEITE &middot; 01</span>
+          <h3>Maschinenraum</h3>
+          <p>Wie die Suche paart, rechnet und wacht, und was der Pr&uuml;fer
+            anders macht. Zw&ouml;lf Klappen, jede einzeln zu &ouml;ffnen.</p>
+          <span class="pfeil">Betreten &rarr;</span>
+        </a>
+        <a href="werdegang.html" class="steigt v1">
+          <span class="nummer">SEITE &middot; 02</span>
+          <h3>Werdegang</h3>
+          <p>Der Weg seit dem 09.08.2026 als Zeitstrahl, mit den Fehlern drin.
+            Die goldenen Punkte sind die Wenden.</p>
+          <span class="pfeil">Betreten &rarr;</span>
+        </a>
+        <a href="faq.html" class="steigt v2">
+          <span class="nummer">SEITE &middot; 03</span>
+          <h3>H&auml;ufige Fragen</h3>
+          <p>F&uuml;nfzehn Fragen, und wo die Antwort unbequem ist, trotzdem die
+            unbequeme.</p>
+          <span class="pfeil">Betreten &rarr;</span>
+        </a>
+      </div>
+    </div>
+  </section>
+
   <!-- ================================================================ PREISE -->
   <section id="preise-kurz">
     <div class="hof">
@@ -540,7 +578,9 @@
         <a href="zugang.html">Zugang</a>
         <a href="preise.html">Preise</a>
         <a href="support.html">Support</a>
-        <a href="faq.html">Haeufige Fragen</a>
+        <a href="faq.html">H&auml;ufige Fragen</a>
+        <a href="technik.html">Maschinenraum</a>
+        <a href="werdegang.html">Werdegang</a>
       </div>
       <div class="spalte">
         <h4>Rechtliches</h4>
@@ -563,5 +603,6 @@
   </div>
 </footer>
 
+<script src="js/tiefe.js?v=3"></script>
 </body>
 </html>
